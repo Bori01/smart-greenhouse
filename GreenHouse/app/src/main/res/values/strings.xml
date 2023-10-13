@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">GreenHouse</string>
+    <string name="dialog_ok_button_text">Ok</string>
+    <string name="dialog_dismiss_button_text">Close</string>
+    <string name="textfield_label_name">Name</string>
+    <string name="text_empty_sector_list">You haven\'t added any sectors yet.</string>
+    <string name="text_null_sector_list">Null response</string>
+    <string name="text_your_sector_list">Your sectors</string>
+    <string name="app_bar_title_edit_sector">Edit sector</string>
+    <string name="app_bar_title_create_sector">Create sector</string>
+    <string name="some_error_message">Error</string>
+    <string name="textfield_label_plants">Plants</string>
+    <string name="textfield_label_mqtt_name">MQTT name</string>
+</resources>
