@@ -11,4 +11,10 @@
     <string name="some_error_message">Error</string>
     <string name="textfield_label_plants">Plants</string>
     <string name="textfield_label_mqtt_name">MQTT name</string>
+    <string name="textfield_label_temperature">Temperature</string>
+    <string name="textfield_label_humidity">Humidity</string>
+    <string name="textfield_label_lightness">Lightness</string>
+    <string name="textfield_label_soilmoisture">Soil moisture</string>
+    <string name="text_general">General</string>
+    <string name="text_sectors">Sectors</string>
 </resources>

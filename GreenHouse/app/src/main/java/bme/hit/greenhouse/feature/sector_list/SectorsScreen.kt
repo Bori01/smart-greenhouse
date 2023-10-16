@@ -22,6 +22,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -46,6 +47,29 @@ fun SectorsScreen(
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
+        topBar = {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(40.dp)
+                    .fillMaxHeight()
+            ) {
+                Button(
+                    onClick = { /*TODO*/ },
+                    shape = RectangleShape,
+                    modifier = Modifier.weight(1F)
+                ) {
+                    Text(text = stringResource(id = R.string.text_general))
+                }
+                Button(
+                    onClick = { /*TODO*/ },
+                    shape = RectangleShape,
+                    modifier = Modifier.weight(1F)
+                ) {
+                    Text(text = stringResource(id = R.string.text_sectors))
+                }
+            }
+        },
         floatingActionButton = {
             Row (
                 horizontalArrangement = Arrangement.SpaceBetween,

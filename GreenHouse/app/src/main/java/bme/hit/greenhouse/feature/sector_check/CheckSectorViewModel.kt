@@ -59,6 +59,30 @@ class CheckSectorViewModel(
                     sector = it.sector?.copy(plants = newValue)
                 ) }
             }
+            is CheckSectorEvent.ChangeTemperature -> {
+                val newValue = event.value
+                _state.update { it.copy(
+                    sector = it.sector?.copy(temperature = newValue)
+                ) }
+            }
+            is CheckSectorEvent.ChangeHumidity -> {
+                val newValue = event.value
+                _state.update { it.copy(
+                    sector = it.sector?.copy(humidity = newValue)
+                ) }
+            }
+            is CheckSectorEvent.ChangeLightness -> {
+                val newValue = event.value
+                _state.update { it.copy(
+                    sector = it.sector?.copy(lightness = newValue)
+                ) }
+            }
+            is CheckSectorEvent.ChangeSoilmoisture -> {
+                val newValue = event.value
+                _state.update { it.copy(
+                    sector = it.sector?.copy(soilmoisture = newValue)
+                ) }
+            }
             CheckSectorEvent.DeleteSector -> {
                 onDelete()
             }

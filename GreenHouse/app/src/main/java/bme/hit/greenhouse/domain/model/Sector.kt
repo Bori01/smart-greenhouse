@@ -7,10 +7,10 @@ data class Sector(
     val mqttname: String,
     val name: String,
     val plants: String,
-    val temperature: Float,
-    val humidity: Float,
-    val lightness: Float,
-    val soilmoisture: Float
+    val temperature: Double,
+    val humidity: Double,
+    val lightness: Double,
+    val soilmoisture: Double
 )
 
 fun SectorEntity.asSector(): Sector = Sector(

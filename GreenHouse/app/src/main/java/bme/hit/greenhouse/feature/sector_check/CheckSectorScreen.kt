@@ -13,6 +13,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -124,10 +125,18 @@ fun CheckSectorScreen(
                 SectorEditor(
                     nameValue = sector.name,
                     nameOnValueChange = { viewModel.onEvent(CheckSectorEvent.ChangeName(it)) },
-                    mqttnameValue = sector.mqtt_name,
+                    mqttnameValue = sector.mqttname,
                     mqttnameOnValueChange = { viewModel.onEvent(CheckSectorEvent.ChangeMqttname(it)) },
                     plantsValue = sector.plants,
                     plantsOnValueChange = { viewModel.onEvent(CheckSectorEvent.ChangePlants(it)) },
+                    temperatureValue = sector.temperature,
+                    temperatureOnValueChange = { viewModel.onEvent(CheckSectorEvent.ChangeTemperature(it.toDouble())) },
+                    humidityValue = sector.humidity,
+                    humidityOnValueChange = { viewModel.onEvent(CheckSectorEvent.ChangeHumidity(it.toDouble())) },
+                    lightnessValue = sector.lightness,
+                    lightnessOnValueChange = { viewModel.onEvent(CheckSectorEvent.ChangeLightness(it.toDouble())) },
+                    soilmoistureValue = sector.soilmoisture,
+                    soilmoistureOnValueChange = { viewModel.onEvent(CheckSectorEvent.ChangeSoilmoisture(it.toDouble())) },
                     modifier = Modifier
                 )
 

@@ -7,6 +7,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import bme.hit.greenhouse.GreenHouseApplication
 import bme.hit.greenhouse.domain.usecases.SectorUseCases
+import bme.hit.greenhouse.feature.sector_check.CheckSectorEvent
 import bme.hit.greenhouse.ui.model.asSector
 import bme.hit.greenhouse.ui.model.toUiText
 import bme.hit.greenhouse.ui.util.UiEvent
@@ -35,16 +36,40 @@ class CreateSectorViewModel(
                     sector = it.sector.copy(name = newValue)
                 ) }
             }
-            is CreateSectorEvent.ChangeMqtt_name -> {
+            is CreateSectorEvent.ChangeMqttname -> {
                 val newValue = event.text
                 _state.update { it.copy(
-                    sector = it.sector.copy(mqtt_name = newValue)
+                    sector = it.sector.copy(mqttname = newValue)
                 ) }
             }
             is CreateSectorEvent.ChangePlants -> {
                 val newValue = event.text
                 _state.update { it.copy(
                     sector = it.sector.copy(plants = newValue)
+                ) }
+            }
+            is CreateSectorEvent.ChangeTemperature -> {
+                val newValue = event.value
+                _state.update { it.copy(
+                    sector = it.sector.copy(temperature = newValue)
+                ) }
+            }
+            is CreateSectorEvent.ChangeHumidity -> {
+                val newValue = event.value
+                _state.update { it.copy(
+                    sector = it.sector.copy(humidity = newValue)
+                ) }
+            }
+            is CreateSectorEvent.ChangeLightness -> {
+                val newValue = event.value
+                _state.update { it.copy(
+                    sector = it.sector.copy(lightness = newValue)
+                ) }
+            }
+            is CreateSectorEvent.ChangeSoilmoisture -> {
+                val newValue = event.value
+                _state.update { it.copy(
+                    sector = it.sector.copy(soilmoisture = newValue)
                 ) }
             }
             CreateSectorEvent.SaveSector -> {

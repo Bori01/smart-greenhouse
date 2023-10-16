@@ -5,20 +5,32 @@ import bme.hit.greenhouse.domain.model.Sector
 data class SectorUi(
     val id: Int = 0,
     val name: String = "",
-    val mqtt_name: String = "",
-    val plants: String = ""
+    val mqttname: String = "",
+    val plants: String = "",
+    val temperature: Double = 0.0,
+    val humidity: Double = 0.0,
+    val lightness: Double = 0.0,
+    val soilmoisture: Double = 0.0
 )
 
 fun Sector.asSectorUi(): SectorUi = SectorUi(
     id = id,
     name = name,
-    mqtt_name = mqtt_name,
-    plants = plants
+    mqttname = mqttname,
+    plants = plants,
+    temperature = temperature,
+    humidity = humidity,
+    lightness = lightness,
+    soilmoisture = soilmoisture
 )
 
 fun SectorUi.asSector(): Sector = Sector(
     id = id,
     name = name,
-    mqtt_name = mqtt_name,
-    plants = plants
+    mqttname = mqttname,
+    plants = plants,
+    temperature = temperature,
+    humidity = humidity,
+    lightness = lightness,
+    soilmoisture = soilmoisture
 )

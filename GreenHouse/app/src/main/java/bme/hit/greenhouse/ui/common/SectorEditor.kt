@@ -24,6 +24,14 @@ fun SectorEditor(
     mqttnameOnValueChange: (String) -> Unit,
     plantsValue: String,
     plantsOnValueChange: (String) -> Unit,
+    temperatureValue: Double,
+    temperatureOnValueChange: (String) -> Unit,
+    humidityValue: Double,
+    humidityOnValueChange: (String) -> Unit,
+    lightnessValue: Double,
+    lightnessOnValueChange: (String) -> Unit,
+    soilmoistureValue: Double,
+    soilmoistureOnValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
 ) {
@@ -69,6 +77,54 @@ fun SectorEditor(
             value = plantsValue,
             label = stringResource(id = R.string.textfield_label_plants),
             onValueChange = plantsOnValueChange,
+            singleLine = false,
+            onDone = { keyboardController?.hide() },
+            modifier = Modifier
+                .fillMaxWidth(fraction)
+                .padding(bottom = 5.dp),
+            enabled = enabled
+        )
+        Spacer(modifier = Modifier.height(5.dp))
+        NormalDoubleField(
+            value = temperatureValue.toString(),
+            label = stringResource(id = R.string.textfield_label_temperature),
+            onValueChange = temperatureOnValueChange,
+            singleLine = false,
+            onDone = { keyboardController?.hide() },
+            modifier = Modifier
+                .fillMaxWidth(fraction)
+                .padding(bottom = 5.dp),
+            enabled = enabled
+        )
+        Spacer(modifier = Modifier.height(5.dp))
+        NormalDoubleField(
+            value = humidityValue.toString(),
+            label = stringResource(id = R.string.textfield_label_humidity),
+            onValueChange = humidityOnValueChange,
+            singleLine = false,
+            onDone = { keyboardController?.hide() },
+            modifier = Modifier
+                .fillMaxWidth(fraction)
+                .padding(bottom = 5.dp),
+            enabled = enabled
+        )
+        Spacer(modifier = Modifier.height(5.dp))
+        NormalDoubleField(
+            value = lightnessValue.toString(),
+            label = stringResource(id = R.string.textfield_label_lightness),
+            onValueChange = lightnessOnValueChange,
+            singleLine = false,
+            onDone = { keyboardController?.hide() },
+            modifier = Modifier
+                .fillMaxWidth(fraction)
+                .padding(bottom = 5.dp),
+            enabled = enabled
+        )
+        Spacer(modifier = Modifier.height(5.dp))
+        NormalDoubleField(
+            value = soilmoistureValue.toString(),
+            label = stringResource(id = R.string.textfield_label_soilmoisture),
+            onValueChange = soilmoistureOnValueChange,
             singleLine = false,
             onDone = { keyboardController?.hide() },
             modifier = Modifier

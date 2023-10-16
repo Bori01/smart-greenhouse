@@ -21,7 +21,7 @@ class GreenHouseApplication : Application() {
             applicationContext,
             SectorDatabase::class.java,
             "sector_database"
-        ).build()
+        ).fallbackToDestructiveMigration().build()
 
         repository = SectorRepositoryImpl(db.dao)
 

@@ -13,6 +13,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import bme.hit.greenhouse.R
+import bme.hit.greenhouse.feature.sector_check.CheckSectorEvent
 import bme.hit.greenhouse.ui.common.SectorAppBar
 import bme.hit.greenhouse.ui.common.SectorEditor
 import bme.hit.greenhouse.ui.util.UiEvent
@@ -74,10 +75,18 @@ fun CreateSectorScreen(
             SectorEditor(
                 nameValue = state.sector.name,
                 nameOnValueChange = { viewModel.onEvent(CreateSectorEvent.ChangeName(it)) },
-                mqtt_nameValue = state.sector.mqtt_name,
-                mqtt_nameOnValueChange = { viewModel.onEvent(CreateSectorEvent.ChangeMqtt_name(it)) },
+                mqttnameValue = state.sector.mqttname,
+                mqttnameOnValueChange = { viewModel.onEvent(CreateSectorEvent.ChangeMqttname(it)) },
                 plantsValue = state.sector.plants,
                 plantsOnValueChange = { viewModel.onEvent(CreateSectorEvent.ChangePlants(it)) },
+                temperatureValue = state.sector.temperature,
+                temperatureOnValueChange = { viewModel.onEvent(CreateSectorEvent.ChangeTemperature(it.toDouble())) },
+                humidityValue = state.sector.humidity,
+                humidityOnValueChange = { viewModel.onEvent(CreateSectorEvent.ChangeHumidity(it.toDouble())) },
+                lightnessValue = state.sector.lightness,
+                lightnessOnValueChange = { viewModel.onEvent(CreateSectorEvent.ChangeLightness(it.toDouble())) },
+                soilmoistureValue = state.sector.soilmoisture,
+                soilmoistureOnValueChange = { viewModel.onEvent(CreateSectorEvent.ChangeSoilmoisture(it.toDouble())) },
                 modifier = Modifier
             )
         }
