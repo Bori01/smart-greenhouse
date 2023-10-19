@@ -9,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import bme.hit.greenhouse.feature.general.GeneralScreen
 import bme.hit.greenhouse.feature.sector_check.CheckSectorScreen
 import bme.hit.greenhouse.feature.sector_create.CreateSectorScreen
 import bme.hit.greenhouse.feature.sector_list.SectorsScreen
@@ -21,8 +22,14 @@ fun NavGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Screen.Sectors.route
+        startDestination = Screen.General.route
     ) {
+        composable(Screen.General.route) {
+            GeneralScreen(
+                onNavigateBack = {
+                }
+            )
+        }
         composable(Screen.Sectors.route) {
             SectorsScreen(
                 onListItemClick = {
@@ -30,6 +37,9 @@ fun NavGraph(
                 },
                 onFabClick = {
                     navController.navigate(Screen.CreateSector.route)
+                },
+                onGeneralClick = {
+                    navController.navigate(Screen.General.route)
                 }
             )
         }

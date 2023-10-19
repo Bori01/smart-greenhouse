@@ -1,4 +1,4 @@
-package bme.hit.greenhouse.domain.usecases
+package bme.hit.greenhouse.domain.usecases.sector
 
 import bme.hit.greenhouse.data.repository.SectorRepository
 import bme.hit.greenhouse.domain.model.Sector

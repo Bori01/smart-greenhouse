@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import bme.hit.greenhouse.GreenHouseApplication
-import bme.hit.greenhouse.domain.usecases.SectorUseCases
+import bme.hit.greenhouse.domain.usecases.sector.SectorUseCases
 import bme.hit.greenhouse.ui.model.asSectorUi
 import bme.hit.greenhouse.ui.model.toUiText
 import bme.hit.greenhouse.ui.util.UiEvent
@@ -65,6 +65,14 @@ class SectorsViewModel(
         }
     }
 
+    fun changeFilter(filter: ScreenFilter){
+        when(filter){
+            ScreenFilter.Settings -> {}
+            ScreenFilter.General -> {}
+            ScreenFilter.Sectors -> {}
+        }
+    }
+
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
@@ -75,4 +83,10 @@ class SectorsViewModel(
             }
         }
     }
+}
+
+sealed class ScreenFilter(){
+    object Settings : ScreenFilter()
+    object General : ScreenFilter()
+    object Sectors : ScreenFilter()
 }

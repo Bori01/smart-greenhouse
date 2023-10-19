@@ -6,8 +6,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import bme.hit.greenhouse.GreenHouseApplication
-import bme.hit.greenhouse.domain.usecases.SectorUseCases
-import bme.hit.greenhouse.feature.sector_check.CheckSectorEvent
+import bme.hit.greenhouse.domain.usecases.sector.SectorUseCases
 import bme.hit.greenhouse.ui.model.asSector
 import bme.hit.greenhouse.ui.model.toUiText
 import bme.hit.greenhouse.ui.util.UiEvent

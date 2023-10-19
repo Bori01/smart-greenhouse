@@ -1,6 +1,7 @@
 package bme.hit.greenhouse.data.dao
 
 import androidx.room.*
+import bme.hit.greenhouse.data.entities.HouseEntity
 import bme.hit.greenhouse.data.entities.SectorEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -23,4 +24,16 @@ interface SectorDao {
 
     @Query("DELETE FROM sector_table")
     suspend fun deleteAllSector()
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertHouse(sector: HouseEntity)
+
+    @Query("SELECT * FROM house_table WHERE id = :id")
+    fun getHouseById(id: Int): Flow<HouseEntity>
+
+    @Update
+    suspend fun updateHouse(sector: HouseEntity)
+
+    @Query("DELETE FROM sector_table WHERE id = :id")
+    suspend fun deleteHouse(id: Int)
 }

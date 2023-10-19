@@ -4,7 +4,7 @@ import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import bme.hit.greenhouse.GreenHouseApplication
-import bme.hit.greenhouse.domain.usecases.SectorUseCases
+import bme.hit.greenhouse.domain.usecases.sector.SectorUseCases
 import bme.hit.greenhouse.ui.model.asSector
 import bme.hit.greenhouse.ui.model.asSectorUi
 import bme.hit.greenhouse.ui.model.toUiText
