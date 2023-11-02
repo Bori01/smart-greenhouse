@@ -1,20 +1,14 @@
-package bme.hit.greenhouse.feature.general
+package bme.hit.greenhouse.feature.settings
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Camera
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.Save
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
@@ -30,11 +24,11 @@ import kotlinx.coroutines.launch
 @ExperimentalComposeUiApi
 @ExperimentalMaterial3Api
 @Composable
-fun GeneralScreen(
+fun SettingsScreen(
     onNavigateBack: () -> Unit,
-    onNavigateSettings: () -> Unit,
+    onNavigateGeneral: () -> Unit,
     onNavigateSectors: () -> Unit,
-    viewModel: GeneralViewModel = viewModel(factory = GeneralViewModel.Factory)
+    viewModel: SettingsViewModel = viewModel(factory = SettingsViewModel.Factory)
 ) {
 
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -67,12 +61,13 @@ fun GeneralScreen(
                 .padding(top = paddingTop)
         ) {
             ScreenPicker(
-                tab = 1,
+                tab = 0,
                 onChange = { tabIndex ->
                 when(tabIndex){
-                    0 -> onNavigateSettings()
-                    1 -> {}
+                    0 -> {}
+                    1 -> onNavigateGeneral()
                     2 -> onNavigateSectors()
+
                 }
             })
 
@@ -82,11 +77,11 @@ fun GeneralScreen(
                     .padding(it),
                 contentAlignment = Alignment.Center
             ) {
-                if (state.isLoadingHouse) {
+                /*if (state.isLoadingHouse) {
                     CircularProgressIndicator(
                         color = MaterialTheme.colorScheme.secondaryContainer
                     )
-                } else {
+                } else {*/
                     val scrollState = rememberScrollState()
                     val keyboardController = LocalSoftwareKeyboardController.current
                     val fraction = 0.95f
@@ -100,9 +95,9 @@ fun GeneralScreen(
                         verticalArrangement = Arrangement.Top,
                     ) {
                         NormalTextField(
-                            value = "5",    //house.waterlevel.toString(),
-                            label = stringResource(id = R.string.textfield_label_waterlevel),
-                            onValueChange = {},
+                            value = state.settings.serveruri,
+                            label = stringResource(id = R.string.textfield_label_serveruri),
+                            onValueChange = { viewModel.onEvent(SettingsEvent.ChangeServerURI(it)) },
                             singleLine = true,
                             enabled = true,
                             onDone = { keyboardController?.hide()  },
@@ -112,9 +107,9 @@ fun GeneralScreen(
                         )
                         Spacer(modifier = Modifier.height(5.dp))
                         NormalTextField(
-                            value = "10",    //house.wind.toString(),
-                            label = stringResource(id = R.string.textfield_label_wind),
-                            onValueChange = {},
+                            value = state.settings.clientid,
+                            label = stringResource(id = R.string.textfield_label_clientid),
+                            onValueChange = { viewModel.onEvent(SettingsEvent.ChangeClientID(it)) },
                             singleLine = true,
                             enabled = true,
                             onDone = { keyboardController?.hide()  },
@@ -123,8 +118,16 @@ fun GeneralScreen(
                                 .padding(top = 5.dp)
                         )
                         Spacer(modifier = Modifier.height(5.dp))
+                        Button(
+                            onClick = { viewModel.onConnect(context, state.settings.serveruri, state.settings.clientid) },
+                            modifier = Modifier
+                                .fillMaxWidth(fraction)
+                                .padding(top = 5.dp)
+                        ) {
+                            Text(text = stringResource(id = R.string.textfield_label_connect))
+                        }
                     }
-                }
+                //}
             }
         }
     }

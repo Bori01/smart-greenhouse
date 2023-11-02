@@ -5,8 +5,6 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import bme.hit.greenhouse.GreenHouseApplication
 import bme.hit.greenhouse.domain.usecases.general.HouseUseCases
-import bme.hit.greenhouse.ui.model.asHouse
-import bme.hit.greenhouse.ui.model.asHouseUi
 import bme.hit.greenhouse.ui.model.toUiText
 import bme.hit.greenhouse.ui.util.UiEvent
 import kotlinx.coroutines.CoroutineScope
@@ -17,6 +15,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import org.eclipse.paho.client.mqttv3.*
+import org.eclipse.paho.android.service.MqttAndroidClient
 
 class GeneralViewModel(
     private val savedState: SavedStateHandle,
@@ -30,9 +30,20 @@ class GeneralViewModel(
     val uiEvent = _uiEvent.receiveAsFlow()
 
     init {
-        load()
+        //load()
     }
 
+    fun fetchData() {
+        viewModelScope.launch {
+            // Aszinkron műveletek itt
+            val result = {
+
+            }
+            // Eredmény kezelése
+        }
+    }
+
+/*
     private fun load() {
         val houseId = checkNotNull<Int>(savedState["id"])
         viewModelScope.launch {
@@ -50,6 +61,8 @@ class GeneralViewModel(
             }
         }
     }
+
+ */
 /*
     private fun onUpdate() {
         viewModelScope.launch(Dispatchers.IO) {

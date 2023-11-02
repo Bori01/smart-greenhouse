@@ -30,7 +30,8 @@ import bme.hit.greenhouse.ui.model.toUiText
 fun SectorsScreen(
     onListItemClick: (Int) -> Unit,
     onFabClick: () -> Unit,
-    onGeneralClick: () -> Unit,
+    onNavigateSettings: () -> Unit,
+    onNavigateGeneral: () -> Unit,
     viewModel: SectorsViewModel = viewModel(factory = SectorsViewModel.Factory),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -73,14 +74,13 @@ fun SectorsScreen(
                 .fillMaxSize()
                 .padding(top = paddingTop)
         ){
-            ScreenPicker(onChange = { tabIndex ->
+            ScreenPicker(
+                tab = 2,
+                onChange = { tabIndex ->
                 when(tabIndex){
-                    0 -> viewModel.changeFilter(ScreenFilter.Settings)
-                    2 -> viewModel.changeFilter(ScreenFilter.Sectors)
-                    else -> {
-                        viewModel.changeFilter(ScreenFilter.General)
-                        onGeneralClick
-                    }
+                    0 -> onNavigateSettings()
+                    1 -> onNavigateGeneral()
+                    2 -> {}
                 }
             })
 

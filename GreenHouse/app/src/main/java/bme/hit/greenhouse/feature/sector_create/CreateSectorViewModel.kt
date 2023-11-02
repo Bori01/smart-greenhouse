@@ -47,30 +47,6 @@ class CreateSectorViewModel(
                     sector = it.sector.copy(plants = newValue)
                 ) }
             }
-            is CreateSectorEvent.ChangeTemperature -> {
-                val newValue = event.value
-                _state.update { it.copy(
-                    sector = it.sector.copy(temperature = newValue)
-                ) }
-            }
-            is CreateSectorEvent.ChangeHumidity -> {
-                val newValue = event.value
-                _state.update { it.copy(
-                    sector = it.sector.copy(humidity = newValue)
-                ) }
-            }
-            is CreateSectorEvent.ChangeLightness -> {
-                val newValue = event.value
-                _state.update { it.copy(
-                    sector = it.sector.copy(lightness = newValue)
-                ) }
-            }
-            is CreateSectorEvent.ChangeSoilmoisture -> {
-                val newValue = event.value
-                _state.update { it.copy(
-                    sector = it.sector.copy(soilmoisture = newValue)
-                ) }
-            }
             CreateSectorEvent.SaveSector -> {
                 onSave()
             }
@@ -81,6 +57,7 @@ class CreateSectorViewModel(
         viewModelScope.launch {
             try {
                 sectorOperations.saveSector(state.value.sector.asSector())
+
                 _uiEvent.send(UiEvent.Success)
             } catch (e: Exception) {
                 _uiEvent.send(UiEvent.Failure(e.toUiText()))

@@ -17,9 +17,10 @@ import androidx.compose.ui.Modifier
 @Composable
 fun ScreenPicker(
     onChange: (Int) -> Unit,
+    tab: Int,
     modifier: Modifier = Modifier
 ) {
-    var tabIndex by remember { mutableStateOf(1) }
+    var tabIndex = tab // by remember { mutableStateOf(1) }
     val tabs = listOf("Settings", "General", "Sectors")
 
     TabRow(
@@ -29,7 +30,7 @@ fun ScreenPicker(
         tabs.forEachIndexed { index, title ->
             Tab(
                 text = { Text(title) },
-                selected = tabIndex == index,
+                selected = true,
                 onClick = {
                     tabIndex = index
                     onChange(index)

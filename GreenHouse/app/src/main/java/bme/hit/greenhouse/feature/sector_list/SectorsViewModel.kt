@@ -65,14 +65,6 @@ class SectorsViewModel(
         }
     }
 
-    fun changeFilter(filter: ScreenFilter){
-        when(filter){
-            ScreenFilter.Settings -> {}
-            ScreenFilter.General -> {}
-            ScreenFilter.Sectors -> {}
-        }
-    }
-
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
@@ -83,10 +75,4 @@ class SectorsViewModel(
             }
         }
     }
-}
-
-sealed class ScreenFilter(){
-    object Settings : ScreenFilter()
-    object General : ScreenFilter()
-    object Sectors : ScreenFilter()
 }

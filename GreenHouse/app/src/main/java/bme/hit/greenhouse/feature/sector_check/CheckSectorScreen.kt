@@ -129,14 +129,6 @@ fun CheckSectorScreen(
                     mqttnameOnValueChange = { viewModel.onEvent(CheckSectorEvent.ChangeMqttname(it)) },
                     plantsValue = sector.plants,
                     plantsOnValueChange = { viewModel.onEvent(CheckSectorEvent.ChangePlants(it)) },
-                    temperatureValue = sector.temperature,
-                    temperatureOnValueChange = { viewModel.onEvent(CheckSectorEvent.ChangeTemperature(it.toDouble())) },
-                    humidityValue = sector.humidity,
-                    humidityOnValueChange = { viewModel.onEvent(CheckSectorEvent.ChangeHumidity(it.toDouble())) },
-                    lightnessValue = sector.lightness,
-                    lightnessOnValueChange = { viewModel.onEvent(CheckSectorEvent.ChangeLightness(it.toDouble())) },
-                    soilmoistureValue = sector.soilmoisture,
-                    soilmoistureOnValueChange = { viewModel.onEvent(CheckSectorEvent.ChangeSoilmoisture(it.toDouble())) },
                     modifier = Modifier
                 )
 

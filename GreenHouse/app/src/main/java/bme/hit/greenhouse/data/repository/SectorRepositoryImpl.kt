@@ -1,7 +1,6 @@
 package bme.hit.greenhouse.data.repository
 
 import bme.hit.greenhouse.data.dao.SectorDao
-import bme.hit.greenhouse.data.entities.HouseEntity
 import bme.hit.greenhouse.data.entities.SectorEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -35,23 +34,4 @@ class SectorRepositoryImpl(private val dao: SectorDao) : SectorRepository {
         //unsubscibe from sectors
     }
 
-    override fun getHouseById(id: Int): Flow<HouseEntity> = dao.getHouseById(id)
-
-    override suspend fun insertHouse(sector: HouseEntity) {
-        dao.insertHouse(sector)
-        //TODO
-        //subscribe to topic mqttname
-    }
-
-    override suspend fun updateHouse(sector: HouseEntity) {
-        dao.updateHouse(sector)
-        //TODO
-        //subscribe to new topic name and unsubscribe from previous one
-    }
-
-    override suspend fun deleteHouse(id: Int) {
-        dao.deleteHouse(id)
-        //TODO
-        //unsubscribe from previous topic
-    }
 }

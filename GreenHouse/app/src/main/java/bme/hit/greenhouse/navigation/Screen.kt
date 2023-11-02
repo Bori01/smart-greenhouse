@@ -7,4 +7,5 @@ sealed class Screen(val route: String) {
     object CheckSector: Screen("check/{id}") {
         fun passId(id: Int) = "check/$id"
     }
+    object Settings: Screen("settings")
 }

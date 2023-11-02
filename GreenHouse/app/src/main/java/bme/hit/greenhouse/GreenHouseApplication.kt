@@ -4,8 +4,6 @@ import android.app.Application
 import androidx.room.Room
 import bme.hit.greenhouse.data.SectorDatabase
 import bme.hit.greenhouse.data.repository.SectorRepositoryImpl
-import org.eclipse.paho.android.service.MqttAndroidClient
-import org.eclipse.paho.client.mqttv3.*
 
 class GreenHouseApplication : Application() {
 
@@ -24,7 +22,5 @@ class GreenHouseApplication : Application() {
         ).fallbackToDestructiveMigration().build()
 
         repository = SectorRepositoryImpl(db.dao)
-
-
     }
 }

@@ -14,6 +14,7 @@ import bme.hit.greenhouse.feature.sector_check.CheckSectorScreen
 import bme.hit.greenhouse.feature.sector_create.CreateSectorScreen
 import bme.hit.greenhouse.feature.sector_list.SectorsScreen
 import bme.hit.greenhouse.feature.sector_list.SectorsViewModel
+import bme.hit.greenhouse.feature.settings.SettingsScreen
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
@@ -27,6 +28,12 @@ fun NavGraph(
         composable(Screen.General.route) {
             GeneralScreen(
                 onNavigateBack = {
+                },
+                onNavigateSettings = {
+                    navController.navigate(Screen.Settings.route)
+                },
+                onNavigateSectors = {
+                    navController.navigate(Screen.Sectors.route)
                 }
             )
         }
@@ -38,7 +45,10 @@ fun NavGraph(
                 onFabClick = {
                     navController.navigate(Screen.CreateSector.route)
                 },
-                onGeneralClick = {
+                onNavigateSettings = {
+                    navController.navigate(Screen.Settings.route)
+                },
+                onNavigateGeneral = {
                     navController.navigate(Screen.General.route)
                 }
             )
@@ -68,6 +78,18 @@ fun NavGraph(
                         route = Screen.Sectors.route,
                         inclusive = true
                     )
+                    navController.navigate(Screen.Sectors.route)
+                }
+            )
+        }
+        composable(Screen.Settings.route) {
+            SettingsScreen(
+                onNavigateBack = {
+                },
+                onNavigateGeneral = {
+                    navController.navigate(Screen.General.route)
+                },
+                onNavigateSectors = {
                     navController.navigate(Screen.Sectors.route)
                 }
             )

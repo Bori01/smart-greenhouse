@@ -17,20 +17,12 @@ fun Sector.asSectorUi(): SectorUi = SectorUi(
     id = id,
     name = name,
     mqttname = mqttname,
-    plants = plants,
-    temperature = temperature,
-    humidity = humidity,
-    lightness = lightness,
-    soilmoisture = soilmoisture
+    plants = plants
 )
 
 fun SectorUi.asSector(): Sector = Sector(
     id = id,
     name = name,
     mqttname = mqttname,
-    plants = plants,
-    temperature = temperature,
-    humidity = humidity,
-    lightness = lightness,
-    soilmoisture = soilmoisture
+    plants = plants
 )

@@ -17,4 +17,9 @@
     <string name="textfield_label_soilmoisture">Soil moisture</string>
     <string name="text_general">General</string>
     <string name="text_sectors">Sectors</string>
+    <string name="textfield_label_waterlevel">Water level</string>
+    <string name="textfield_label_wind">Wind</string>
+    <string name="textfield_label_serveruri">Server URI</string>
+    <string name="textfield_label_clientid">Client ID</string>
+    <string name="textfield_label_connect">Connect</string>
 </resources>
