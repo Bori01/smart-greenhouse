@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Camera
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Save
@@ -13,14 +12,13 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import bme.hit.greenhouse.R
-import bme.hit.greenhouse.feature.sector_create.CreateSectorEvent
+import bme.hit.greenhouse.feature.charts.GaugeChart
 import bme.hit.greenhouse.ui.common.SectorAppBar
 import bme.hit.greenhouse.ui.common.SectorEditor
 import bme.hit.greenhouse.ui.model.SectorUi
@@ -91,7 +89,7 @@ fun CheckSectorScreen(
         floatingActionButton = {
             if (state.isEditingSector) {
                 Row(
-                    horizontalArrangement = Arrangement.SpaceBetween,
+                    horizontalArrangement = Arrangement.End,
                     modifier = Modifier
                         .padding(33.dp, 0.dp, 0.dp, 0.dp)
                         .fillMaxWidth()
@@ -131,6 +129,8 @@ fun CheckSectorScreen(
                     plantsOnValueChange = { viewModel.onEvent(CheckSectorEvent.ChangePlants(it)) },
                     modifier = Modifier
                 )
+                Spacer(modifier = Modifier.height(5.dp))
+                GaugeChart()
 
             }
         }

@@ -7,6 +7,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import bme.hit.greenhouse.GreenHouseApplication
 import bme.hit.greenhouse.domain.usecases.sector.SectorUseCases
+import bme.hit.greenhouse.feature.settings.MQTTClient
 import bme.hit.greenhouse.ui.model.asSector
 import bme.hit.greenhouse.ui.model.toUiText
 import bme.hit.greenhouse.ui.util.UiEvent
@@ -57,7 +58,7 @@ class CreateSectorViewModel(
         viewModelScope.launch {
             try {
                 sectorOperations.saveSector(state.value.sector.asSector())
-
+                MQTTClient.subscribe(state.value.sector.mqttname)
                 _uiEvent.send(UiEvent.Success)
             } catch (e: Exception) {
                 _uiEvent.send(UiEvent.Failure(e.toUiText()))

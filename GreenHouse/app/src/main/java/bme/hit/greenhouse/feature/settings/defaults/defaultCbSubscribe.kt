@@ -11,6 +11,6 @@ object defaultCbSubscribe : IMqttActionListener {
     }
 
     override fun onFailure(asyncActionToken: IMqttToken?, exception: Throwable?) {
-        Log.d(this.javaClass.name, "Failed to subscribe: topic")
+        Log.d(this.javaClass.name, "Failed to subscribe: topic - ${exception.toString()}")
     }
 }

@@ -1,16 +1,21 @@
 package bme.hit.greenhouse.feature.settings
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
-import androidx.compose.ui.platform.LocalContext
 import bme.hit.greenhouse.feature.settings.defaults.*
-import org.eclipse.paho.android.service.MqttAndroidClient
+import info.mqtt.android.service.Ack
+import info.mqtt.android.service.MqttAndroidClient
 import org.eclipse.paho.client.mqttv3.*
 
-class MQTTClient(context: Context?,
-                 serverURI: String,
-                 clientID: String = "") {
-    private var mqttClient = MqttAndroidClient(context, serverURI, clientID)
+object MQTTClient {
+
+    @SuppressLint("StaticFieldLeak")
+    lateinit var mqttClient : MqttAndroidClient
+    fun init(context: Context, serverURI: String, clientID: String = "") {
+        Log.d("init", "kaka")
+        mqttClient = MqttAndroidClient(context, serverURI, clientID, Ack.AUTO_ACK)
+    }
 
     fun connect(username:   String               = "",
                 password:   String               = "",
@@ -35,6 +40,7 @@ class MQTTClient(context: Context?,
                   cbSubscribe:  IMqttActionListener = defaultCbSubscribe
     ) {
         try {
+            Log.d("mqtttopic", topic)
             mqttClient.subscribe(topic, qos, null, cbSubscribe)
         } catch (e: MqttException) {
             e.printStackTrace()
@@ -74,17 +80,6 @@ class MQTTClient(context: Context?,
         } catch (e: MqttException) {
             e.printStackTrace()
         }
-    }
-
-    companion object {
-
-        @Volatile
-        private var instance: MQTTClient? = null
-
-        fun getInstance() =
-            instance ?: synchronized(this) {
-                instance ?: MQTTClient(null, "").also { instance = it }
-            }
     }
 
 }

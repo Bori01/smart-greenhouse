@@ -5,6 +5,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import bme.hit.greenhouse.GreenHouseApplication
 import bme.hit.greenhouse.domain.usecases.sector.SectorUseCases
+import bme.hit.greenhouse.feature.settings.MQTTClient
 import bme.hit.greenhouse.ui.model.asSector
 import bme.hit.greenhouse.ui.model.asSectorUi
 import bme.hit.greenhouse.ui.model.toUiText
@@ -35,6 +36,7 @@ class CheckSectorViewModel(
                 _state.update { it.copy(
                     isEditingSector = true
                 ) }
+                state.value.sector?.let { MQTTClient.unsubscribe(it.mqttname) }
             }
             CheckSectorEvent.StopEditingSector -> {
                 _state.update { it.copy(
@@ -107,7 +109,9 @@ class CheckSectorViewModel(
                         isLoadingSector = false,
                         sector = sector.getOrThrow().asSectorUi()
                     ) }
+                    state.value.sector?.let { MQTTClient.subscribe(it.mqttname) }
                 }
+
             } catch (e: Exception) {
                 _uiEvent.send(UiEvent.Failure(e.toUiText()))
             }
@@ -120,6 +124,7 @@ class CheckSectorViewModel(
                 sectorOperations.updateSector(
                     _state.value.sector?.asSector()!!
                 )
+                state.value.sector?.let { MQTTClient.subscribe(it.mqttname) }
                 _uiEvent.send(UiEvent.Success)
             } catch (e: Exception) {
                 _uiEvent.send(UiEvent.Failure(e.toUiText()))

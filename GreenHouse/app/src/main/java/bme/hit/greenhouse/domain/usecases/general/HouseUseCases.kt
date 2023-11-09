@@ -4,4 +4,5 @@ import bme.hit.greenhouse.data.repository.SectorRepository
 
 class HouseUseCases(repository: SectorRepository) {
     val loadHouse = LoadHouseUseCase(repository)
+    val saveHouse = SaveHouseUseCase(repository)
 }

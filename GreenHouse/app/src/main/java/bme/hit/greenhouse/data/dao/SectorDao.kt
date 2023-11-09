@@ -1,6 +1,7 @@
 package bme.hit.greenhouse.data.dao
 
 import androidx.room.*
+import bme.hit.greenhouse.data.entities.MQTTEntity
 import bme.hit.greenhouse.data.entities.SectorEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -23,5 +24,17 @@ interface SectorDao {
 
     @Query("DELETE FROM sector_table")
     suspend fun deleteAllSector()
+
+    @Insert(onConflict = OnConflictStrategy.ABORT)
+    suspend fun insertMQTT(mqtt: MQTTEntity)
+
+    @Query("SELECT * FROM mqtt_table ORDER BY id DESC LIMIT 1")
+    fun getMQTTById(): Flow<MQTTEntity>
+
+    @Update
+    suspend fun updateMQTT(mqtt: MQTTEntity)
+
+    @Query("DELETE FROM mqtt_table WHERE id = :id")
+    suspend fun deleteMQTT(id: Int)
 
 }

@@ -10,7 +10,7 @@
     <string name="app_bar_title_create_sector">Create sector</string>
     <string name="some_error_message">Error</string>
     <string name="textfield_label_plants">Plants</string>
-    <string name="textfield_label_mqtt_name">MQTT name</string>
+    <string name="textfield_label_mqtt_name">MQTT topic</string>
     <string name="textfield_label_temperature">Temperature</string>
     <string name="textfield_label_humidity">Humidity</string>
     <string name="textfield_label_lightness">Lightness</string>
@@ -22,4 +22,7 @@
     <string name="textfield_label_serveruri">Server URI</string>
     <string name="textfield_label_clientid">Client ID</string>
     <string name="textfield_label_connect">Connect</string>
+    <string name="textfield_label_maintopic">House MQTT topic</string>
+    <string name="textfield_label_subscribe">Subscribe</string>
+    <string name="textfield_label_subscribeandsave">Subscribe and save</string>
 </resources>

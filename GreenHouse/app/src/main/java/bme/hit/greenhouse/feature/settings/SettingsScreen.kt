@@ -1,5 +1,6 @@
 package bme.hit.greenhouse.feature.settings
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -106,10 +107,20 @@ fun SettingsScreen(
                                 .padding(top = 5.dp)
                         )
                         Spacer(modifier = Modifier.height(5.dp))
+                        Button(
+                            onClick = { viewModel.onConnect(context, state.settings.serveruri) },
+                            modifier = Modifier
+                                .fillMaxWidth(fraction)
+                                .padding(top = 5.dp)
+                        ) {
+                            Log.d("serveruri", state.settings.serveruri)
+                            Text(text = stringResource(id = R.string.textfield_label_connect))
+                        }
+
                         NormalTextField(
-                            value = state.settings.clientid,
-                            label = stringResource(id = R.string.textfield_label_clientid),
-                            onValueChange = { viewModel.onEvent(SettingsEvent.ChangeClientID(it)) },
+                            value = state.settings.house,
+                            label = stringResource(id = R.string.textfield_label_maintopic),
+                            onValueChange = { viewModel.onEvent(SettingsEvent.ChangeHouse(it)) },
                             singleLine = true,
                             enabled = true,
                             onDone = { keyboardController?.hide()  },
@@ -119,12 +130,13 @@ fun SettingsScreen(
                         )
                         Spacer(modifier = Modifier.height(5.dp))
                         Button(
-                            onClick = { viewModel.onConnect(context, state.settings.serveruri, state.settings.clientid) },
+                            onClick = { viewModel.onEvent(SettingsEvent.saveHouse) },
                             modifier = Modifier
                                 .fillMaxWidth(fraction)
                                 .padding(top = 5.dp)
                         ) {
-                            Text(text = stringResource(id = R.string.textfield_label_connect))
+                            Log.d("house", state.settings.house)
+                            Text(text = stringResource(id = R.string.textfield_label_subscribeandsave))
                         }
                     }
                 //}
