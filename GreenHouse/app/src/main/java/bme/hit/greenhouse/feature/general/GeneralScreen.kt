@@ -22,9 +22,11 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import bme.hit.greenhouse.R
+import bme.hit.greenhouse.feature.settings.MQTTClient
 import bme.hit.greenhouse.ui.common.NormalTextField
 import bme.hit.greenhouse.ui.common.ScreenPicker
 import bme.hit.greenhouse.ui.util.UiEvent
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @ExperimentalComposeUiApi
@@ -55,6 +57,23 @@ fun GeneralScreen(
                     }
                 }
             }
+        }
+    }
+
+    var waterlevel by remember { mutableStateOf(MQTTClient.general_waterlevel) }
+    var windlevel by remember { mutableStateOf(MQTTClient.general_windlevel) }
+
+    LaunchedEffect(key1 = waterlevel) {
+        while(true) {
+            delay(5000)
+            waterlevel = MQTTClient.general_waterlevel
+        }
+    }
+
+    LaunchedEffect(key1 = windlevel) {
+        while(true) {
+            delay(5000)
+            windlevel = MQTTClient.general_windlevel
         }
     }
 
@@ -100,7 +119,7 @@ fun GeneralScreen(
                         verticalArrangement = Arrangement.Top,
                     ) {
                         NormalTextField(
-                            value = "5",    //house.waterlevel.toString(),
+                            value = waterlevel,
                             label = stringResource(id = R.string.textfield_label_waterlevel),
                             onValueChange = {},
                             singleLine = true,
@@ -112,7 +131,7 @@ fun GeneralScreen(
                         )
                         Spacer(modifier = Modifier.height(5.dp))
                         NormalTextField(
-                            value = "10",    //house.wind.toString(),
+                            value = windlevel,
                             label = stringResource(id = R.string.textfield_label_wind),
                             onValueChange = {},
                             singleLine = true,

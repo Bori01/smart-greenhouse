@@ -31,16 +31,6 @@ class GeneralViewModel(
         //load()
     }
 
-    fun fetchData() {
-        viewModelScope.launch {
-            // Aszinkron műveletek itt
-            val result = {
-
-            }
-            // Eredmény kezelése
-        }
-    }
-
 /*
     private fun load() {
         val houseId = checkNotNull<Int>(savedState["id"])
@@ -106,6 +96,7 @@ class GeneralViewModel(
             }
         }
     }
+
 }
 
 sealed class ScreenFilter(){

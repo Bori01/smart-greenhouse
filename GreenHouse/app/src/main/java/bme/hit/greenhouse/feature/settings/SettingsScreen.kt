@@ -113,7 +113,6 @@ fun SettingsScreen(
                                 .fillMaxWidth(fraction)
                                 .padding(top = 5.dp)
                         ) {
-                            Log.d("serveruri", state.settings.serveruri)
                             Text(text = stringResource(id = R.string.textfield_label_connect))
                         }
 
@@ -135,7 +134,6 @@ fun SettingsScreen(
                                 .fillMaxWidth(fraction)
                                 .padding(top = 5.dp)
                         ) {
-                            Log.d("house", state.settings.house)
                             Text(text = stringResource(id = R.string.textfield_label_subscribeandsave))
                         }
                     }

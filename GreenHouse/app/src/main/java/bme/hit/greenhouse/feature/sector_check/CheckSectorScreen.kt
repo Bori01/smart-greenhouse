@@ -1,6 +1,9 @@
 package bme.hit.greenhouse.feature.sector_check
 
+import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -13,16 +16,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import bme.hit.greenhouse.R
-import bme.hit.greenhouse.feature.charts.GaugeChart
+import bme.hit.greenhouse.feature.settings.MQTTClient
+import bme.hit.greenhouse.ui.common.NormalTextField
 import bme.hit.greenhouse.ui.common.SectorAppBar
 import bme.hit.greenhouse.ui.common.SectorEditor
 import bme.hit.greenhouse.ui.model.SectorUi
 import bme.hit.greenhouse.ui.util.UiEvent
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @ExperimentalComposeUiApi
@@ -51,6 +57,39 @@ fun CheckSectorScreen(
                     }
                 }
             }
+        }
+    }
+
+    var temperature by remember { mutableStateOf(MQTTClient.temperature) }
+    var humidity by remember { mutableStateOf(MQTTClient.humidity) }
+    var light by remember { mutableStateOf(MQTTClient.light) }
+    var soilmoisture by remember { mutableStateOf(MQTTClient.soilmoisture) }
+
+    LaunchedEffect(key1 = temperature) {
+        while(true) {
+            delay(5000)
+            temperature = MQTTClient.temperature
+        }
+    }
+
+    LaunchedEffect(key1 = humidity) {
+        while(true) {
+            delay(5000)
+            humidity = MQTTClient.humidity
+        }
+    }
+
+    LaunchedEffect(key1 = light) {
+        while(true) {
+            delay(5000)
+            light = MQTTClient.light
+        }
+    }
+
+    LaunchedEffect(key1 = soilmoisture) {
+        while(true) {
+            delay(5000)
+            soilmoisture = MQTTClient.soilmoisture
         }
     }
 
@@ -120,6 +159,10 @@ fun CheckSectorScreen(
                 )
             } else {
                 val sector = state.sector ?: SectorUi()
+                val scrollState = rememberScrollState()
+                val keyboardController = LocalSoftwareKeyboardController.current
+                val fraction = 0.95f
+
                 SectorEditor(
                     nameValue = sector.name,
                     nameOnValueChange = { viewModel.onEvent(CheckSectorEvent.ChangeName(it)) },
@@ -130,7 +173,65 @@ fun CheckSectorScreen(
                     modifier = Modifier
                 )
                 Spacer(modifier = Modifier.height(5.dp))
-                GaugeChart()
+                if (!(state.isEditingSector)) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(MaterialTheme.colorScheme.secondaryContainer)
+                            .verticalScroll(scrollState),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Top,
+                    ) {
+                        NormalTextField(
+                            value = temperature,
+                            label = stringResource(id = R.string.textfield_label_temperature),
+                            onValueChange = {},
+                            singleLine = true,
+                            enabled = false,
+                            onDone = { keyboardController?.hide()  },
+                            modifier = Modifier
+                                .fillMaxWidth(fraction)
+                                .padding(top = 5.dp)
+                        )
+                        Spacer(modifier = Modifier.height(5.dp))
+                        NormalTextField(
+                            value = humidity,
+                            label = stringResource(id = R.string.textfield_label_humidity),
+                            onValueChange = {},
+                            singleLine = true,
+                            enabled = false,
+                            onDone = { keyboardController?.hide()  },
+                            modifier = Modifier
+                                .fillMaxWidth(fraction)
+                                .padding(top = 5.dp)
+                        )
+                        Spacer(modifier = Modifier.height(5.dp))
+                        NormalTextField(
+                            value = light,
+                            label = stringResource(id = R.string.textfield_label_lightness),
+                            onValueChange = {},
+                            singleLine = true,
+                            enabled = false,
+                            onDone = { keyboardController?.hide()  },
+                            modifier = Modifier
+                                .fillMaxWidth(fraction)
+                                .padding(top = 5.dp)
+                        )
+                        Spacer(modifier = Modifier.height(5.dp))
+                        NormalTextField(
+                            value = soilmoisture,
+                            label = stringResource(id = R.string.textfield_label_soilmoisture),
+                            onValueChange = {},
+                            singleLine = true,
+                            enabled = false,
+                            onDone = { keyboardController?.hide()  },
+                            modifier = Modifier
+                                .fillMaxWidth(fraction)
+                                .padding(top = 5.dp)
+                        )
+                    }
+                }
+
 
             }
         }

@@ -78,7 +78,7 @@ class SettingsViewModel(
             settings = it.settings.copy(serveruri = "tcp://broker.hivemq.com:1883")
         ) }
         _state.update { it.copy(
-            settings = it.settings.copy(house = "general")
+            settings = it.settings.copy(house = "general/#")
         ) }
     }
 

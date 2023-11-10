@@ -3,6 +3,7 @@ package bme.hit.greenhouse.feature.settings
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
+import bme.hit.greenhouse.feature.settings.custom.customCbClient
 import bme.hit.greenhouse.feature.settings.defaults.*
 import info.mqtt.android.service.Ack
 import info.mqtt.android.service.MqttAndroidClient
@@ -12,15 +13,22 @@ object MQTTClient {
 
     @SuppressLint("StaticFieldLeak")
     lateinit var mqttClient : MqttAndroidClient
+
+    var general_waterlevel: String = ""
+    var general_windlevel: String = ""
+    var temperature: String = ""
+    var humidity: String = ""
+    var light: String = ""
+    var soilmoisture: String = ""
+
     fun init(context: Context, serverURI: String, clientID: String = "") {
-        Log.d("init", "kaka")
         mqttClient = MqttAndroidClient(context, serverURI, clientID, Ack.AUTO_ACK)
     }
 
     fun connect(username:   String               = "",
                 password:   String               = "",
                 cbConnect:  IMqttActionListener  = defaultCbConnect,
-                cbClient:   MqttCallback         = defaultCbClient
+                cbClient:   MqttCallback         = customCbClient
     ) {
         mqttClient.setCallback(cbClient)
         val options = MqttConnectOptions()
@@ -28,7 +36,6 @@ object MQTTClient {
         //options.password = password.toCharArray()
 
         try {
-            Log.d("kaka", "kaka")
             mqttClient.connect(options, null, cbConnect)
         } catch (e: MqttException) {
             e.printStackTrace()
@@ -40,7 +47,6 @@ object MQTTClient {
                   cbSubscribe:  IMqttActionListener = defaultCbSubscribe
     ) {
         try {
-            Log.d("mqtttopic", topic)
             mqttClient.subscribe(topic, qos, null, cbSubscribe)
         } catch (e: MqttException) {
             e.printStackTrace()
