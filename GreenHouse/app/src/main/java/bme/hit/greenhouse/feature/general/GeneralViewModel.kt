@@ -1,10 +1,12 @@
 package bme.hit.greenhouse.feature.general
 
+import android.util.Log
 import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import bme.hit.greenhouse.GreenHouseApplication
 import bme.hit.greenhouse.domain.usecases.general.HouseUseCases
+import bme.hit.greenhouse.feature.settings.MQTTClient
 import bme.hit.greenhouse.ui.model.toUiText
 import bme.hit.greenhouse.ui.util.UiEvent
 import kotlinx.coroutines.CoroutineScope
@@ -28,21 +30,21 @@ class GeneralViewModel(
     val uiEvent = _uiEvent.receiveAsFlow()
 
     init {
-        //load()
+        load()
     }
 
-/*
+
     private fun load() {
-        val houseId = checkNotNull<Int>(savedState["id"])
         viewModelScope.launch {
-            _state.update { it.copy(isLoadingHouse = true) }
             try {
-                val house = houseOperations.loadHouse(houseId)
                 CoroutineScope(coroutineContext).launch(Dispatchers.IO) {
-                    _state.update { it.copy(
-                        isLoadingHouse = false,
-                        house = house.getOrThrow().asHouseUi()
-                    ) }
+                    if (MQTTClient.isInitalized()) {
+                        _state.update { it.copy(isMqttReady = true) }
+                    }
+                    else {
+                        Log.d("error", "Lateinit property mqttClient is not initalized")
+                        _state.update { it.copy(isMqttReady = false) }
+                    }
                 }
             } catch (e: Exception) {
                 _uiEvent.send(UiEvent.Failure(e.toUiText()))
@@ -50,39 +52,6 @@ class GeneralViewModel(
         }
     }
 
- */
-/*
-    private fun onUpdate() {
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                houseOperations.updateHouse(
-                    _state.value.house?.asHouse()!!
-                )
-                _uiEvent.send(UiEvent.Success)
-            } catch (e: Exception) {
-                _uiEvent.send(UiEvent.Failure(e.toUiText()))
-            }
-        }
-    }
-
-    private fun onDelete() {
-        viewModelScope.launch {
-            try {
-                houseOperations.deleteHouse(state.value.house!!.id)
-                _uiEvent.send(UiEvent.Success)
-            } catch (e: Exception) {
-                _uiEvent.send(UiEvent.Failure(e.toUiText()))
-            }
-        }
-    }
-*/
-    fun changeFilter(filter: ScreenFilter){
-        when(filter){
-            ScreenFilter.Settings -> {}
-            ScreenFilter.General -> {}
-            ScreenFilter.Sectors -> {}
-        }
-    }
 
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {

@@ -1,5 +1,6 @@
 package bme.hit.greenhouse.feature.sector_create
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -58,11 +59,22 @@ class CreateSectorViewModel(
         viewModelScope.launch {
             try {
                 sectorOperations.saveSector(state.value.sector.asSector())
-                MQTTClient.subscribe(state.value.sector.mqttname)
+                onSubscribe()
                 _uiEvent.send(UiEvent.Success)
             } catch (e: Exception) {
                 _uiEvent.send(UiEvent.Failure(e.toUiText()))
             }
+        }
+    }
+
+    private fun onSubscribe() {
+        if (MQTTClient.isInitalized()) {
+            _state.update { it.copy(isMqttReady = true) }
+            state.value.sector?.let { MQTTClient.subscribe(it.mqttname) }
+        }
+        else {
+            Log.d("error", "Lateinit property mqttClient is not initalized")
+            _state.update { it.copy(isMqttReady = false) }
         }
     }
 

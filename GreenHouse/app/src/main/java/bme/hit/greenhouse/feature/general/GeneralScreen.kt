@@ -1,5 +1,6 @@
 package bme.hit.greenhouse.feature.general
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -123,7 +124,7 @@ fun GeneralScreen(
                             label = stringResource(id = R.string.textfield_label_waterlevel),
                             onValueChange = {},
                             singleLine = true,
-                            enabled = true,
+                            enabled = false,
                             onDone = { keyboardController?.hide()  },
                             modifier = Modifier
                                 .fillMaxWidth(fraction)
@@ -135,13 +136,19 @@ fun GeneralScreen(
                             label = stringResource(id = R.string.textfield_label_wind),
                             onValueChange = {},
                             singleLine = true,
-                            enabled = true,
+                            enabled = false,
                             onDone = { keyboardController?.hide()  },
                             modifier = Modifier
                                 .fillMaxWidth(fraction)
                                 .padding(top = 5.dp)
                         )
                         Spacer(modifier = Modifier.height(5.dp))
+                    }
+                    if (!(state.isMqttReady)) {
+                        var text = "Please connect to the MQTT server first!"
+                        val duration = Toast.LENGTH_SHORT
+                        val toast = Toast.makeText(context, text, duration)
+                        toast.show()
                     }
                 }
             }

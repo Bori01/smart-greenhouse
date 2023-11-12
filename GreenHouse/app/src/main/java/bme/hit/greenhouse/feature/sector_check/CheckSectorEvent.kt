@@ -10,6 +10,8 @@ sealed class CheckSectorEvent {
     data class ChangeHumidity(val value: Double): CheckSectorEvent()
     data class ChangeLightness(val value: Double): CheckSectorEvent()
     data class ChangeSoilmoisture(val value: Double): CheckSectorEvent()
+    object PublishWater: CheckSectorEvent()
+    object Unsubscribe: CheckSectorEvent()
     object DeleteSector: CheckSectorEvent()
     object UpdateSector: CheckSectorEvent()
 }

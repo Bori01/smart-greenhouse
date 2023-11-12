@@ -9,6 +9,7 @@ import info.mqtt.android.service.Ack
 import info.mqtt.android.service.MqttAndroidClient
 import org.eclipse.paho.client.mqttv3.*
 
+
 object MQTTClient {
 
     @SuppressLint("StaticFieldLeak")
@@ -25,9 +26,13 @@ object MQTTClient {
         mqttClient = MqttAndroidClient(context, serverURI, clientID, Ack.AUTO_ACK)
     }
 
+    fun isInitalized() : Boolean {
+        return ::mqttClient.isInitialized
+    }
+
     fun connect(username:   String               = "",
                 password:   String               = "",
-                cbConnect:  IMqttActionListener  = defaultCbConnect,
+                cbConnect:  IMqttActionListener  = defaultCbConnect(mqttClient.context),
                 cbClient:   MqttCallback         = customCbClient
     ) {
         mqttClient.setCallback(cbClient)
@@ -37,6 +42,7 @@ object MQTTClient {
 
         try {
             mqttClient.connect(options, null, cbConnect)
+
         } catch (e: MqttException) {
             e.printStackTrace()
         }
@@ -44,7 +50,7 @@ object MQTTClient {
 
     fun subscribe(topic:        String,
                   qos:          Int                 = 1,
-                  cbSubscribe:  IMqttActionListener = defaultCbSubscribe
+                  cbSubscribe:  IMqttActionListener = defaultCbSubscribe(topic, mqttClient.context)
     ) {
         try {
             mqttClient.subscribe(topic, qos, null, cbSubscribe)

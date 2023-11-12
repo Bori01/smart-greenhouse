@@ -1,6 +1,7 @@
 package bme.hit.greenhouse.feature.sector_check
 
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -23,6 +24,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import bme.hit.greenhouse.R
 import bme.hit.greenhouse.feature.settings.MQTTClient
+import bme.hit.greenhouse.feature.settings.SettingsEvent
 import bme.hit.greenhouse.ui.common.NormalTextField
 import bme.hit.greenhouse.ui.common.SectorAppBar
 import bme.hit.greenhouse.ui.common.SectorEditor
@@ -101,7 +103,10 @@ fun CheckSectorScreen(
                     title = if (state.isEditingSector) {
                         stringResource(id = R.string.app_bar_title_edit_sector)
                     } else state.sector?.name ?: "Sector",
-                    onNavigateBack = onNavigateBack,
+                    onNavigateBack = {
+                        viewModel.onEvent(CheckSectorEvent.Unsubscribe)
+                        onNavigateBack()
+                    },
                     actions = {
                         IconButton(
                             onClick = {
@@ -229,11 +234,25 @@ fun CheckSectorScreen(
                                 .fillMaxWidth(fraction)
                                 .padding(top = 5.dp)
                         )
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Button(
+                            onClick = { viewModel.onEvent(CheckSectorEvent.PublishWater) },
+                            modifier = Modifier
+                                .fillMaxWidth(fraction)
+                                .padding(top = 5.dp)
+                        ) {
+                            Text(text = stringResource(id = R.string.textfield_label_waterit))
+                        }
                     }
                 }
-
-
             }
         }
+    }
+
+    if (!(state.isMqttReady)) {
+        var text = "Please connect to the MQTT server first!"
+        val duration = Toast.LENGTH_SHORT
+        val toast = Toast.makeText(context, text, duration)
+        toast.show()
     }
 }

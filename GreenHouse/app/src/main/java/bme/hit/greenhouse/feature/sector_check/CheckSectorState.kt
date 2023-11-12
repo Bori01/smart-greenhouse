@@ -6,5 +6,6 @@ data class CheckSectorState(
     val sector: SectorUi? = null,
     val isLoadingSector: Boolean = false,
     val isEditingSector: Boolean = false,
+    val isMqttReady: Boolean = false,
     val error: Throwable? = null
 )

@@ -1,5 +1,6 @@
 package bme.hit.greenhouse.feature.sector_create
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Save
@@ -80,6 +81,12 @@ fun CreateSectorScreen(
                 plantsOnValueChange = { viewModel.onEvent(CreateSectorEvent.ChangePlants(it)) },
                 modifier = Modifier
             )
+            if (!(state.isMqttReady)) {
+                var text = "Please connect to the MQTT server first!"
+                val duration = Toast.LENGTH_SHORT
+                val toast = Toast.makeText(context, text, duration)
+                toast.show()
+            }
         }
     }
 }

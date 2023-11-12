@@ -2,6 +2,7 @@ package bme.hit.greenhouse.feature.settings
 
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.initializer
@@ -17,6 +18,7 @@ import bme.hit.greenhouse.ui.util.UiEvent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 

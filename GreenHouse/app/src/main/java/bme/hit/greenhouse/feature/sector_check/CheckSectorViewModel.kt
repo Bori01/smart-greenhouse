@@ -1,5 +1,8 @@
 package bme.hit.greenhouse.feature.sector_check
 
+import android.content.Context
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
@@ -21,7 +24,7 @@ import kotlinx.coroutines.launch
 
 class CheckSectorViewModel(
     private val savedState: SavedStateHandle,
-    private val sectorOperations: SectorUseCases,
+    private val sectorOperations: SectorUseCases
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(CheckSectorState())
@@ -36,7 +39,7 @@ class CheckSectorViewModel(
                 _state.update { it.copy(
                     isEditingSector = true
                 ) }
-                state.value.sector?.let { MQTTClient.unsubscribe(it.mqttname) }
+                onUnsubscribe()
             }
             CheckSectorEvent.StopEditingSector -> {
                 _state.update { it.copy(
@@ -85,7 +88,14 @@ class CheckSectorViewModel(
                     sector = it.sector?.copy(soilmoisture = newValue)
                 ) }
             }
+            CheckSectorEvent.PublishWater -> {
+                onWater()
+            }
+            CheckSectorEvent.Unsubscribe -> {
+                onUnsubscribe()
+            }
             CheckSectorEvent.DeleteSector -> {
+                onUnsubscribe()
                 onDelete()
             }
             CheckSectorEvent.UpdateSector -> {
@@ -109,7 +119,7 @@ class CheckSectorViewModel(
                         isLoadingSector = false,
                         sector = sector.getOrThrow().asSectorUi()
                     ) }
-                    state.value.sector?.let { MQTTClient.subscribe(it.mqttname) }
+                    onSubscribe()
                 }
 
             } catch (e: Exception) {
@@ -124,7 +134,7 @@ class CheckSectorViewModel(
                 sectorOperations.updateSector(
                     _state.value.sector?.asSector()!!
                 )
-                state.value.sector?.let { MQTTClient.subscribe(it.mqttname) }
+                onSubscribe()
                 _uiEvent.send(UiEvent.Success)
             } catch (e: Exception) {
                 _uiEvent.send(UiEvent.Failure(e.toUiText()))
@@ -132,6 +142,16 @@ class CheckSectorViewModel(
         }
     }
 
+    private fun onSubscribe() {
+        if (MQTTClient.isInitalized()) {
+            _state.update { it.copy(isMqttReady = true) }
+            state.value.sector?.let { MQTTClient.subscribe(it.mqttname) }
+        }
+        else {
+            Log.d("error", "Lateinit property mqttClient is not initalized")
+            _state.update { it.copy(isMqttReady = false) }
+        }
+    }
     private fun onDelete() {
         viewModelScope.launch {
             try {
@@ -140,6 +160,30 @@ class CheckSectorViewModel(
             } catch (e: Exception) {
                 _uiEvent.send(UiEvent.Failure(e.toUiText()))
             }
+        }
+    }
+
+    private fun onUnsubscribe() {
+        if (MQTTClient.isInitalized()) {
+            _state.update { it.copy(isMqttReady = true) }
+            state.value.sector?.let { MQTTClient.unsubscribe(it.mqttname) }
+        }
+        else {
+            Log.d("error", "Lateinit property mqttClient is not initalized")
+            _state.update { it.copy(isMqttReady = false) }
+        }
+    }
+
+    private fun onWater() {
+        if (MQTTClient.isInitalized()) {
+            _state.update { it.copy(isMqttReady = true) }
+            var topic = state.value.sector?.mqttname?.split("#")?.get(0).plus("water")
+            Log.d("publish", topic)
+            state.value.sector?.let { MQTTClient.publish(topic, "1") }
+        }
+        else {
+            Log.d("error", "Lateinit property mqttClient is not initalized")
+            _state.update { it.copy(isMqttReady = false) }
         }
     }
 

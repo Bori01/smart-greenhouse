@@ -25,4 +25,5 @@
     <string name="textfield_label_maintopic">House MQTT topic</string>
     <string name="textfield_label_subscribe">Subscribe</string>
     <string name="textfield_label_subscribeandsave">Subscribe and save</string>
+    <string name="textfield_label_waterit">Water it</string>
 </resources>
