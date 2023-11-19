@@ -66,14 +66,14 @@ fun GeneralScreen(
 
     LaunchedEffect(key1 = waterlevel) {
         while(true) {
-            delay(5000)
+            delay(1000)
             waterlevel = MQTTClient.general_waterlevel
         }
     }
 
     LaunchedEffect(key1 = windlevel) {
         while(true) {
-            delay(5000)
+            delay(1000)
             windlevel = MQTTClient.general_windlevel
         }
     }
@@ -144,12 +144,12 @@ fun GeneralScreen(
                         )
                         Spacer(modifier = Modifier.height(5.dp))
                     }
-                    if (!(state.isMqttReady)) {
+                    /*if (!(state.isMqttReady)) {
                         var text = "Please connect to the MQTT server first!"
                         val duration = Toast.LENGTH_SHORT
                         val toast = Toast.makeText(context, text, duration)
                         toast.show()
-                    }
+                    }*/
                 }
             }
         }

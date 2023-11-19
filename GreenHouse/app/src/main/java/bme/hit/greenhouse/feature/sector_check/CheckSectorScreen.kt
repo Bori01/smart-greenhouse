@@ -69,28 +69,28 @@ fun CheckSectorScreen(
 
     LaunchedEffect(key1 = temperature) {
         while(true) {
-            delay(5000)
+            delay(1000)
             temperature = MQTTClient.temperature
         }
     }
 
     LaunchedEffect(key1 = humidity) {
         while(true) {
-            delay(5000)
+            delay(1000)
             humidity = MQTTClient.humidity
         }
     }
 
     LaunchedEffect(key1 = light) {
         while(true) {
-            delay(5000)
+            delay(1000)
             light = MQTTClient.light
         }
     }
 
     LaunchedEffect(key1 = soilmoisture) {
         while(true) {
-            delay(5000)
+            delay(1000)
             soilmoisture = MQTTClient.soilmoisture
         }
     }
@@ -248,11 +248,11 @@ fun CheckSectorScreen(
             }
         }
     }
-
+    /*
     if (!(state.isMqttReady)) {
         var text = "Please connect to the MQTT server first!"
         val duration = Toast.LENGTH_SHORT
         val toast = Toast.makeText(context, text, duration)
         toast.show()
-    }
+    }*/
 }
