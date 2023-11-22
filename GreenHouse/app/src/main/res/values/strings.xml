@@ -26,4 +26,7 @@
     <string name="textfield_label_subscribe">Subscribe</string>
     <string name="textfield_label_subscribeandsave">Subscribe and save</string>
     <string name="textfield_label_waterit">Water it</string>
+    <string name="textfield_label_startventillator">Start ventilator</string>
+    <string name="textfield_label_openwindow">Open window</string>
+    <string name="textfield_label_closewindow">Close window</string>
 </resources>

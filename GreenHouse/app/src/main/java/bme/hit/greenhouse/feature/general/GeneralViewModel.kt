@@ -29,10 +29,38 @@ class GeneralViewModel(
     private val _uiEvent = Channel<UiEvent>()
     val uiEvent = _uiEvent.receiveAsFlow()
 
+    fun onEvent(event: GeneralEvent) {
+        when(event) {
+            GeneralEvent.PublishVentillator -> {
+                onPublish("general/ventillator", "start")
+            }
+            GeneralEvent.OpenWindow -> {
+                onPublish("general/window", "open")
+            }
+            GeneralEvent.CloseWindow -> {
+                onPublish("general/window", "close")
+            }
+            GeneralEvent.PublishLight -> {
+                onPublish("general/light", state.value.rgb)
+            }
+        }
+    }
+
     init {
         load()
     }
 
+    private fun onPublish(topic: String, msg: String) {
+        if (MQTTClient.isInitalized()) {
+            _state.update { it.copy(isMqttReady = true) }
+            Log.d("publish", topic)
+            MQTTClient.publish(topic, msg)
+        }
+        else {
+            Log.d("error", "Lateinit property mqttClient is not initalized")
+            _state.update { it.copy(isMqttReady = false) }
+        }
+    }
 
     private fun load() {
         viewModelScope.launch {

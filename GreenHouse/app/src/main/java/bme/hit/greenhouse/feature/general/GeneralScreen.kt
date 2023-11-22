@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import bme.hit.greenhouse.R
+import bme.hit.greenhouse.feature.sector_check.CheckSectorEvent
 import bme.hit.greenhouse.feature.settings.MQTTClient
 import bme.hit.greenhouse.ui.common.NormalTextField
 import bme.hit.greenhouse.ui.common.ScreenPicker
@@ -143,6 +144,83 @@ fun GeneralScreen(
                                 .padding(top = 5.dp)
                         )
                         Spacer(modifier = Modifier.height(5.dp))
+                        Button(
+                            onClick = { viewModel.onEvent(GeneralEvent.PublishVentillator) },
+                            modifier = Modifier
+                                .fillMaxWidth(fraction)
+                                .padding(top = 5.dp)
+                        ) {
+                            Text(text = stringResource(id = R.string.textfield_label_startventillator))
+                        }
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.SpaceEvenly
+                        ) {
+                            Button(
+                                onClick = { viewModel.onEvent(GeneralEvent.OpenWindow) },
+                                modifier = Modifier
+                                    .fillMaxWidth(fraction)
+                                    .padding(top = 5.dp)
+                            ) {
+                                Text(text = stringResource(id = R.string.textfield_label_openwindow))
+                            }
+                            Button(
+                                onClick = { viewModel.onEvent(GeneralEvent.CloseWindow) },
+                                modifier = Modifier
+                                    .fillMaxWidth(fraction)
+                                    .padding(top = 5.dp)
+                            ) {
+                                Text(text = stringResource(id = R.string.textfield_label_closewindow))
+                            }
+                        }
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.SpaceEvenly
+                        ) {
+                            var rgb = state.rgb
+                            var red = 0
+                            var green = 0
+                            var blue = 0
+
+                            NormalTextField(
+                                value = red.toString(),
+                                label = stringResource(id = R.string.textfield_label_wind),
+                                onValueChange = {},
+                                singleLine = true,
+                                enabled = false,
+                                onDone = { keyboardController?.hide()  },
+                                modifier = Modifier
+                                    .fillMaxWidth(fraction)
+                                    .padding(top = 5.dp)
+                            )
+                            NormalTextField(
+                                value = windlevel,
+                                label = stringResource(id = R.string.textfield_label_wind),
+                                onValueChange = {},
+                                singleLine = true,
+                                enabled = false,
+                                onDone = { keyboardController?.hide()  },
+                                modifier = Modifier
+                                    .fillMaxWidth(fraction)
+                                    .padding(top = 5.dp)
+                            )
+                            NormalTextField(
+                                value = windlevel,
+                                label = stringResource(id = R.string.textfield_label_wind),
+                                onValueChange = {},
+                                singleLine = true,
+                                enabled = false,
+                                onDone = { keyboardController?.hide()  },
+                                modifier = Modifier
+                                    .fillMaxWidth(fraction)
+                                    .padding(top = 5.dp)
+                            )
+                        }
+
                     }
                     /*if (!(state.isMqttReady)) {
                         var text = "Please connect to the MQTT server first!"
