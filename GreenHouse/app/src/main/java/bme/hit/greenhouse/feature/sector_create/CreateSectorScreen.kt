@@ -81,12 +81,6 @@ fun CreateSectorScreen(
                 plantsOnValueChange = { viewModel.onEvent(CreateSectorEvent.ChangePlants(it)) },
                 modifier = Modifier
             )
-            /*if (!(state.isMqttReady)) {
-                var text = "Please connect to the MQTT server first!"
-                val duration = Toast.LENGTH_SHORT
-                val toast = Toast.makeText(context, text, duration)
-                toast.show()
-            }*/
         }
     }
 }

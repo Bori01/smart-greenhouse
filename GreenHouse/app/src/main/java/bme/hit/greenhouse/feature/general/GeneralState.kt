@@ -1,8 +1,10 @@
 package bme.hit.greenhouse.feature.general
 
+import bme.hit.greenhouse.ui.model.RGBUi
+
 data class GeneralState (
     val isLoadingHouse: Boolean = false,
-    val rgb: MutableList<Int> = mutableListOf(0, 0, 0),
+    val rgb: RGBUi = RGBUi(),
     val isMqttReady: Boolean = false,
     val error: Throwable? = null
 )

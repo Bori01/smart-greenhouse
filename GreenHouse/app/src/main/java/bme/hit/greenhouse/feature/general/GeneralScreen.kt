@@ -6,19 +6,20 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Camera
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.Save
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -27,6 +28,7 @@ import bme.hit.greenhouse.feature.sector_check.CheckSectorEvent
 import bme.hit.greenhouse.feature.settings.MQTTClient
 import bme.hit.greenhouse.ui.common.NormalTextField
 import bme.hit.greenhouse.ui.common.ScreenPicker
+import bme.hit.greenhouse.ui.model.RGBUi
 import bme.hit.greenhouse.ui.util.UiEvent
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -131,7 +133,20 @@ fun GeneralScreen(
                                 .fillMaxWidth(fraction)
                                 .padding(top = 5.dp)
                         )
-                        Spacer(modifier = Modifier.height(5.dp))
+                        if (waterlevel != "" && waterlevel.toInt() < 500) {
+                            Spacer(modifier = Modifier.height(10.dp))
+                            Text(
+                                text = stringResource(id = R.string.textfield_givewater),
+                                modifier = Modifier
+                                    .fillMaxWidth(fraction)
+                                    .padding(top = 5.dp, start = 5.dp),
+                                style = TextStyle(
+                                    color = Color.Red,
+                                    fontWeight = FontWeight.Bold
+                                )
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(10.dp))
                         NormalTextField(
                             value = windlevel,
                             label = stringResource(id = R.string.textfield_label_wind),
@@ -143,77 +158,43 @@ fun GeneralScreen(
                                 .fillMaxWidth(fraction)
                                 .padding(top = 5.dp)
                         )
-                        Spacer(modifier = Modifier.height(5.dp))
-                        Button(
-                            onClick = { viewModel.onEvent(GeneralEvent.PublishVentillator) },
+                        Row(
                             modifier = Modifier
-                                .fillMaxWidth(fraction)
-                                .padding(top = 5.dp)
-                        ) {
-                            Text(text = stringResource(id = R.string.textfield_label_startventillator))
-                        }
-                        Spacer(modifier = Modifier.height(5.dp))
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            verticalAlignment = Alignment.CenterVertically,
+                                .fillMaxWidth(fraction),
+                            verticalAlignment = Alignment.Top,
                             horizontalArrangement = Arrangement.SpaceEvenly
                         ) {
-                            Button(
-                                onClick = { viewModel.onEvent(GeneralEvent.OpenWindow) },
-                                modifier = Modifier
-                                    .fillMaxWidth(fraction)
-                                    .padding(top = 5.dp)
-                            ) {
-                                Text(text = stringResource(id = R.string.textfield_label_openwindow))
-                            }
-                            Button(
-                                onClick = { viewModel.onEvent(GeneralEvent.CloseWindow) },
-                                modifier = Modifier
-                                    .fillMaxWidth(fraction)
-                                    .padding(top = 5.dp)
-                            ) {
-                                Text(text = stringResource(id = R.string.textfield_label_closewindow))
-                            }
-                        }
-                        Spacer(modifier = Modifier.height(5.dp))
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.SpaceEvenly
-                        ) {
-                            var rgb = state.rgb
-
                             NormalTextField(
-                                value = rgb[0].toString(),
+                                value = state.rgb.red,
                                 label = stringResource(id = R.string.textfield_label_red),
-                                onValueChange = { viewModel.onEvent(GeneralEvent.ChangeRgb(it.toInt(), 0)) },
+                                onValueChange = { viewModel.onEvent(GeneralEvent.ChangeRed(it)) },
                                 singleLine = true,
                                 enabled = true,
-                                onDone = { keyboardController?.hide()  },
+                                onDone = { keyboardController?.hide() },
                                 modifier = Modifier
-                                    .fillMaxWidth(fraction)
+                                    .weight(1F)
                                     .padding(top = 5.dp)
                             )
                             NormalTextField(
-                                value = rgb[1].toString(),
+                                value = state.rgb.green,
                                 label = stringResource(id = R.string.textfield_label_green),
-                                onValueChange = { viewModel.onEvent(GeneralEvent.ChangeRgb(it.toInt(), 1)) },
+                                onValueChange = { viewModel.onEvent(GeneralEvent.ChangeGreen(it)) },
                                 singleLine = true,
                                 enabled = true,
-                                onDone = { keyboardController?.hide()  },
+                                onDone = { keyboardController?.hide() },
                                 modifier = Modifier
-                                    .fillMaxWidth(fraction)
+                                    .weight(1F)
                                     .padding(top = 5.dp)
                             )
                             NormalTextField(
-                                value = rgb[2].toString(),
+                                value = state.rgb.blue,
                                 label = stringResource(id = R.string.textfield_label_blue),
-                                onValueChange = { viewModel.onEvent(GeneralEvent.ChangeRgb(it.toInt(), 2)) },
+                                onValueChange = { viewModel.onEvent(GeneralEvent.ChangeBlue(it)) },
                                 singleLine = true,
                                 enabled = true,
-                                onDone = { keyboardController?.hide()  },
+                                onDone = { keyboardController?.hide() },
                                 modifier = Modifier
-                                    .fillMaxWidth(fraction)
+                                    .weight(1F)
                                     .padding(top = 5.dp)
                             )
                         }
@@ -224,18 +205,70 @@ fun GeneralScreen(
                                 .fillMaxWidth(fraction)
                                 .padding(top = 5.dp)
                         ) {
+                            Icon(
+                                imageVector = Icons.Default.Lightbulb,
+                                contentDescription = null,
+                                tint = Color.Black
+                            )
+                            Spacer(modifier = Modifier.height(10.dp))
                             Text(text = stringResource(id = R.string.textfield_label_changelight))
                         }
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Button(
+                            onClick = { viewModel.onEvent(GeneralEvent.PublishVentillator) },
+                            modifier = Modifier
+                                .fillMaxWidth(fraction)
+                                .padding(top = 5.dp)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.WindPower,
+                                contentDescription = null,
+                                tint = Color.Black
+                            )
+                            Spacer(modifier = Modifier.height(10.dp))
+                            Text(text = stringResource(id = R.string.textfield_label_startventillator))
+                        }
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth(fraction),
+                            verticalAlignment = Alignment.Top
+                        ) {
+                            Button(
+                                onClick = { viewModel.onEvent(GeneralEvent.OpenWindow) },
+                                modifier = Modifier
+                                    .weight(1F)
+                                    .padding(top = 5.dp)
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Window,
+                                    contentDescription = null,
+                                    tint = Color.White
+                                )
+                                Spacer(modifier = Modifier.height(10.dp))
+                                Text(text = stringResource(id = R.string.textfield_label_openwindow))
+                            }
+                            Button(
+                                onClick = { viewModel.onEvent(GeneralEvent.CloseWindow) },
+                                modifier = Modifier
+                                    .weight(1F)
+                                    .padding(top = 5.dp)
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Window,
+                                    contentDescription = null,
+                                    tint = Color.Black
+                                )
+                                Spacer(modifier = Modifier.height(10.dp))
+                                Text(text = stringResource(id = R.string.textfield_label_closewindow))
+                            }
+                        }
+                        Spacer(modifier = Modifier.height(5.dp))
 
                     }
-                    /*if (!(state.isMqttReady)) {
-                        var text = "Please connect to the MQTT server first!"
-                        val duration = Toast.LENGTH_SHORT
-                        val toast = Toast.makeText(context, text, duration)
-                        toast.show()
-                    }*/
                 }
             }
         }
     }
 }
+

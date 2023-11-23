@@ -32,32 +32,40 @@ class GeneralViewModel(
     fun onEvent(event: GeneralEvent) {
         when(event) {
             GeneralEvent.PublishVentillator -> {
-                onPublish("general/ventillator", "start")
+                onPublish("FIM3VE/general/ventillator", "start")
             }
             GeneralEvent.OpenWindow -> {
-                onPublish("general/window", "open")
+                onPublish("FIM3VE/general/window", "open")
             }
             GeneralEvent.CloseWindow -> {
-                onPublish("general/window", "close")
+                onPublish("FIM3VE/general/window", "close")
             }
             GeneralEvent.PublishLight -> {
-                var msg = ""
+                val msg: String
                 val rgb = state.value.rgb
-                if (rgb[0] == 0 && rgb[1] == 0 && rgb[2] == 0) {
-                    msg = "off"
+                if (!(rgb.red == "0" && rgb.green == "0" && rgb.blue == "0") && !(rgb.red == "" && rgb.green == "" && rgb.blue == "")) {
+                    msg = "on " + (if (isPercent(rgb.red)) rgb.red else "0") + " " + (if (isPercent(rgb.green)) rgb.green else "0") + " " + (if (isPercent(rgb.blue)) rgb.blue else "0")
                 }
-                else {
-                    msg = "on " + rgb[0].toString() + " "+ rgb[1].toString() + " " + rgb[2].toString()
-                }
-                onPublish("general/light", msg)
+                else msg = "off"
+                onPublish("FIM3VE/general/light", msg)
             }
-            is GeneralEvent.ChangeRgb -> {
+            is GeneralEvent.ChangeRed -> {
                 val newValue = event.value
-                val position = event.position
-                val newrgb = state.value.rgb
-                newrgb[position] = newValue
                 _state.update { it.copy(
-                    rgb = newrgb
+                    rgb = it.rgb.copy(red = newValue)
+                ) }
+                state.value.rgb?.red?.let { Log.d("red", it) }
+            }
+            is GeneralEvent.ChangeGreen -> {
+                val newValue = event.value
+                _state.update { it.copy(
+                    rgb = it.rgb.copy(green = newValue)
+                ) }
+            }
+            is GeneralEvent.ChangeBlue -> {
+                val newValue = event.value
+                _state.update { it.copy(
+                    rgb = it.rgb.copy(blue = newValue)
                 ) }
             }
         }
@@ -65,6 +73,10 @@ class GeneralViewModel(
 
     init {
         load()
+    }
+
+    private fun isPercent(input: String) : Boolean {
+        return input.matches(Regex("""^(0|[1-9]\d?|100)$"""))
     }
 
     private fun onPublish(topic: String, msg: String) {

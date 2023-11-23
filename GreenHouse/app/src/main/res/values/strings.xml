@@ -33,4 +33,5 @@
     <string name="textfield_label_green">Green</string>
     <string name="textfield_label_blue">Blue</string>
     <string name="textfield_label_changelight">Change light</string>
+    <string name="textfield_givewater">Water level is low, please refill water tank!</string>
 </resources>

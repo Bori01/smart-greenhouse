@@ -7,5 +7,7 @@ sealed class GeneralEvent {
     object CloseWindow: GeneralEvent()
     object PublishVentillator: GeneralEvent()
     object PublishLight: GeneralEvent()
-    data class ChangeRgb(val value: Int, val position: Int): GeneralEvent()
+    data class ChangeRed(val value: String): GeneralEvent()
+    data class ChangeGreen(val value: String): GeneralEvent()
+    data class ChangeBlue(val value: String): GeneralEvent()
 }

@@ -19,7 +19,7 @@ object MQTTClient {
     var general_windlevel: String = ""
     var temperature: String = ""
     var humidity: String = ""
-    var light: String = ""
+    var lightness: String = ""
     var soilmoisture: String = ""
 
     fun init(context: Context, serverURI: String, clientID: String = "") {

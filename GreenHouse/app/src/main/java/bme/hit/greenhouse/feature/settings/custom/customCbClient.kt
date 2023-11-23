@@ -11,7 +11,7 @@ object customCbClient : MqttCallback {
         val msg = "Receive message: ${message.toString()} from topic: $topic"
         Log.d(this.javaClass.name, msg)
 
-        var value = msg.split(" ")[2]
+        var value = message.toString()
 
         with(topic!!) {
             when {
@@ -19,7 +19,7 @@ object customCbClient : MqttCallback {
                 contains("windlevel") -> { MQTTClient.general_windlevel = value }
                 contains("temperature") -> { MQTTClient.temperature = value }
                 contains("humidity") -> { MQTTClient.humidity = value }
-                contains("light") -> { MQTTClient.light = value }
+                contains("lightness") -> { MQTTClient.lightness = value }
                 contains("soilmoisture") -> { MQTTClient.soilmoisture = value }
             }
         }

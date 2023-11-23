@@ -8,14 +8,13 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.Save
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
@@ -64,7 +63,7 @@ fun CheckSectorScreen(
 
     var temperature by remember { mutableStateOf(MQTTClient.temperature) }
     var humidity by remember { mutableStateOf(MQTTClient.humidity) }
-    var light by remember { mutableStateOf(MQTTClient.light) }
+    var light by remember { mutableStateOf(MQTTClient.lightness) }
     var soilmoisture by remember { mutableStateOf(MQTTClient.soilmoisture) }
 
     LaunchedEffect(key1 = temperature) {
@@ -84,7 +83,7 @@ fun CheckSectorScreen(
     LaunchedEffect(key1 = light) {
         while(true) {
             delay(1000)
-            light = MQTTClient.light
+            light = MQTTClient.lightness
         }
     }
 
@@ -241,6 +240,12 @@ fun CheckSectorScreen(
                                 .fillMaxWidth(fraction)
                                 .padding(top = 5.dp)
                         ) {
+                            Icon(
+                                imageVector = Icons.Default.WaterDrop,
+                                contentDescription = null,
+                                tint = Color.Black
+                            )
+                            Spacer(modifier = Modifier.height(5.dp))
                             Text(text = stringResource(id = R.string.textfield_label_waterit))
                         }
                     }
