@@ -5,7 +5,7 @@ import bme.hit.greenhouse.feature.sector_check.CheckSectorEvent
 sealed class GeneralEvent {
     object OpenWindow: GeneralEvent()
     object CloseWindow: GeneralEvent()
-    object PublishVentillator: GeneralEvent()
+    object PublishVentilator: GeneralEvent()
     object PublishLight: GeneralEvent()
     data class ChangeRed(val value: String): GeneralEvent()
     data class ChangeGreen(val value: String): GeneralEvent()

@@ -215,7 +215,7 @@ fun GeneralScreen(
                         }
                         Spacer(modifier = Modifier.height(5.dp))
                         Button(
-                            onClick = { viewModel.onEvent(GeneralEvent.PublishVentillator) },
+                            onClick = { viewModel.onEvent(GeneralEvent.PublishVentilator) },
                             modifier = Modifier
                                 .fillMaxWidth(fraction)
                                 .padding(top = 5.dp)
@@ -226,7 +226,7 @@ fun GeneralScreen(
                                 tint = Color.Black
                             )
                             Spacer(modifier = Modifier.height(10.dp))
-                            Text(text = stringResource(id = R.string.textfield_label_startventillator))
+                            Text(text = stringResource(id = R.string.textfield_label_startventilator))
                         }
                         Spacer(modifier = Modifier.height(5.dp))
                         Row(

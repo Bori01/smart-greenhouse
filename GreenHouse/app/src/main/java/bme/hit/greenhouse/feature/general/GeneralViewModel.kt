@@ -31,8 +31,8 @@ class GeneralViewModel(
 
     fun onEvent(event: GeneralEvent) {
         when(event) {
-            GeneralEvent.PublishVentillator -> {
-                onPublish("FIM3VE/general/ventillator", "start")
+            GeneralEvent.PublishVentilator -> {
+                onPublish("FIM3VE/general/ventilator", "start")
             }
             GeneralEvent.OpenWindow -> {
                 onPublish("FIM3VE/general/window", "open")
