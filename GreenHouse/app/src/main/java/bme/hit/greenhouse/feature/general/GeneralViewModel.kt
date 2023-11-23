@@ -41,7 +41,24 @@ class GeneralViewModel(
                 onPublish("general/window", "close")
             }
             GeneralEvent.PublishLight -> {
-                onPublish("general/light", state.value.rgb)
+                var msg = ""
+                val rgb = state.value.rgb
+                if (rgb[0] == 0 && rgb[1] == 0 && rgb[2] == 0) {
+                    msg = "off"
+                }
+                else {
+                    msg = "on " + rgb[0].toString() + " "+ rgb[1].toString() + " " + rgb[2].toString()
+                }
+                onPublish("general/light", msg)
+            }
+            is GeneralEvent.ChangeRgb -> {
+                val newValue = event.value
+                val position = event.position
+                val newrgb = state.value.rgb
+                newrgb[position] = newValue
+                _state.update { it.copy(
+                    rgb = newrgb
+                ) }
             }
         }
     }

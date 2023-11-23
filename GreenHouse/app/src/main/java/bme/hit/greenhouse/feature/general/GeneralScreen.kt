@@ -182,43 +182,49 @@ fun GeneralScreen(
                             horizontalArrangement = Arrangement.SpaceEvenly
                         ) {
                             var rgb = state.rgb
-                            var red = 0
-                            var green = 0
-                            var blue = 0
 
                             NormalTextField(
-                                value = red.toString(),
-                                label = stringResource(id = R.string.textfield_label_wind),
-                                onValueChange = {},
+                                value = rgb[0].toString(),
+                                label = stringResource(id = R.string.textfield_label_red),
+                                onValueChange = { viewModel.onEvent(GeneralEvent.ChangeRgb(it.toInt(), 0)) },
                                 singleLine = true,
-                                enabled = false,
+                                enabled = true,
                                 onDone = { keyboardController?.hide()  },
                                 modifier = Modifier
                                     .fillMaxWidth(fraction)
                                     .padding(top = 5.dp)
                             )
                             NormalTextField(
-                                value = windlevel,
-                                label = stringResource(id = R.string.textfield_label_wind),
-                                onValueChange = {},
+                                value = rgb[1].toString(),
+                                label = stringResource(id = R.string.textfield_label_green),
+                                onValueChange = { viewModel.onEvent(GeneralEvent.ChangeRgb(it.toInt(), 1)) },
                                 singleLine = true,
-                                enabled = false,
+                                enabled = true,
                                 onDone = { keyboardController?.hide()  },
                                 modifier = Modifier
                                     .fillMaxWidth(fraction)
                                     .padding(top = 5.dp)
                             )
                             NormalTextField(
-                                value = windlevel,
-                                label = stringResource(id = R.string.textfield_label_wind),
-                                onValueChange = {},
+                                value = rgb[2].toString(),
+                                label = stringResource(id = R.string.textfield_label_blue),
+                                onValueChange = { viewModel.onEvent(GeneralEvent.ChangeRgb(it.toInt(), 2)) },
                                 singleLine = true,
-                                enabled = false,
+                                enabled = true,
                                 onDone = { keyboardController?.hide()  },
                                 modifier = Modifier
                                     .fillMaxWidth(fraction)
                                     .padding(top = 5.dp)
                             )
+                        }
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Button(
+                            onClick = { viewModel.onEvent(GeneralEvent.PublishLight) },
+                            modifier = Modifier
+                                .fillMaxWidth(fraction)
+                                .padding(top = 5.dp)
+                        ) {
+                            Text(text = stringResource(id = R.string.textfield_label_changelight))
                         }
 
                     }

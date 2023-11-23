@@ -29,4 +29,8 @@
     <string name="textfield_label_startventillator">Start ventilator</string>
     <string name="textfield_label_openwindow">Open window</string>
     <string name="textfield_label_closewindow">Close window</string>
+    <string name="textfield_label_red">Red</string>
+    <string name="textfield_label_green">Green</string>
+    <string name="textfield_label_blue">Blue</string>
+    <string name="textfield_label_changelight">Change light</string>
 </resources>
