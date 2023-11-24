@@ -1,0 +1,195 @@
+<mxfile host="app.diagrams.net" modified="2023-11-24T22:37:03.138Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="nTLCSn7-cH5FsV4_u2dv" version="21.3.7" type="device">
+  <diagram id="6a731a19-8d31-9384-78a2-239565b7b9f0" name="Page-1">
+    <mxGraphModel dx="1434" dy="866" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="1745" value="" style="edgeStyle=none;rounded=0;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=classic;startFill=1;endArrow=classic;endFill=1;jettySize=auto;orthogonalLoop=1;strokeColor=#ffcc00;strokeWidth=3;fontFamily=Helvetica;fontSize=16;fontColor=#23445D;spacing=5;" parent="1" source="1749" target="1764" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1746" value="" style="edgeStyle=none;rounded=0;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=classic;startFill=1;endArrow=classic;endFill=1;jettySize=auto;orthogonalLoop=1;strokeColor=#ffcc00;strokeWidth=3;fontFamily=Helvetica;fontSize=16;fontColor=#23445D;spacing=5;" parent="1" source="1749" target="xTgkxQXU3fezMwYFI47d-1820" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="798" y="350.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1747" value="" style="edgeStyle=none;rounded=0;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=classic;startFill=1;endArrow=classic;endFill=1;jettySize=auto;orthogonalLoop=1;strokeColor=#ffcc00;strokeWidth=3;fontFamily=Helvetica;fontSize=16;fontColor=#23445D;spacing=5;" parent="1" source="1749" target="xTgkxQXU3fezMwYFI47d-1793" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="570" y="568.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1748" value="" style="edgeStyle=none;rounded=0;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=classic;startFill=1;endArrow=classic;endFill=1;jettySize=auto;orthogonalLoop=1;strokeColor=#ffcc00;strokeWidth=3;fontFamily=Helvetica;fontSize=16;fontColor=#23445D;spacing=5;" parent="1" source="1749" target="1753" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1749" value="&lt;font color=&quot;#332900&quot;&gt;MQTT Bróker&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#ffe066;fontFamily=Helvetica;fontSize=16;fontColor=#000000;align=center;fontStyle=1;spacing=5;arcSize=7;perimeterSpacing=2;" parent="1" vertex="1">
+          <mxGeometry x="490" y="315.5" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="1750" value="" style="edgeStyle=none;rounded=1;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=none;startFill=0;jettySize=auto;orthogonalLoop=1;strokeColor=#2D7600;strokeWidth=3;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;spacing=5;fontStyle=1;fillColor=#60a917;" parent="1" source="1753" target="1756" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1751" value="" style="edgeStyle=none;rounded=1;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=none;startFill=0;jettySize=auto;orthogonalLoop=1;strokeColor=#2D7600;strokeWidth=3;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;spacing=5;fontStyle=1;fillColor=#60a917;" parent="1" source="1753" target="1755" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1752" value="" style="edgeStyle=none;rounded=1;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=none;startFill=0;jettySize=auto;orthogonalLoop=1;strokeColor=#2D7600;strokeWidth=3;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;spacing=5;fontStyle=1;fillColor=#60a917;" parent="1" source="1753" target="1754" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1754" value="Talajnedvesség-mérő szenzor" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#d5e8d4;fontFamily=Helvetica;fontSize=14;align=center;spacing=5;fontStyle=0;arcSize=7;perimeterSpacing=2;" parent="1" vertex="1">
+          <mxGeometry x="300" y="550" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="1755" value="Hőmérséklet- és páratartalom-mérő szenzor" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#d5e8d4;fontFamily=Helvetica;fontSize=14;align=center;spacing=5;fontStyle=0;arcSize=7;perimeterSpacing=2;" parent="1" vertex="1">
+          <mxGeometry x="130" y="550" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="1756" value="Fényerősségmérő szenzor" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#d5e8d4;fontFamily=Helvetica;fontSize=14;align=center;spacing=5;fontStyle=0;arcSize=7;perimeterSpacing=2;" parent="1" vertex="1">
+          <mxGeometry x="70" y="440" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1780" value="" style="group;fillColor=#a20025;fontColor=#ffffff;strokeColor=none;rounded=1;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="210" y="310.5" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="1753" value="Raspberry Pi Zero&lt;br&gt;&lt;br&gt;Nyák egy szektorhoz" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#a20025;fontFamily=Helvetica;fontSize=14;fontColor=#ffffff;align=center;spacing=5;fontStyle=1;arcSize=7;perimeterSpacing=2;" parent="xTgkxQXU3fezMwYFI47d-1780" vertex="1">
+          <mxGeometry width="159.99999999999997" height="80.00000000000001" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1779" value="" style="line;strokeWidth=4;html=1;perimeter=backbonePerimeter;points=[];outlineConnect=0;strokeColor=#FFFFFF;" vertex="1" parent="xTgkxQXU3fezMwYFI47d-1780">
+          <mxGeometry x="5.333333333333332" y="35.26627218934912" width="149.33333333333334" height="9.467455621301776" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1781" value="Vízpumpa" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#ffe6cc;fontFamily=Helvetica;fontSize=14;align=center;spacing=5;arcSize=7;perimeterSpacing=2;" vertex="1" parent="1">
+          <mxGeometry x="360" y="440" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1782" value="" style="edgeStyle=none;rounded=0;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=none;startFill=0;endArrow=classic;endFill=1;jettySize=auto;orthogonalLoop=1;strokeColor=#F08705;strokeWidth=3;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;spacing=5;" edge="1" parent="1" source="1753" target="xTgkxQXU3fezMwYFI47d-1781">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="559" y="209" as="sourcePoint" />
+            <mxPoint x="501" y="183" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1785" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="480" y="160" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="1764" value="Nyák a központhoz&lt;br&gt;&lt;br&gt;Raspberry Pi 4" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#663200;fontFamily=Helvetica;fontSize=14;fontColor=#ffffff;align=center;spacing=5;fontStyle=1;arcSize=7;perimeterSpacing=2;" parent="xTgkxQXU3fezMwYFI47d-1785" vertex="1">
+          <mxGeometry width="159.99999999999997" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1784" value="" style="line;strokeWidth=4;html=1;perimeter=backbonePerimeter;points=[];outlineConnect=0;strokeColor=#FFFFFF;" vertex="1" parent="xTgkxQXU3fezMwYFI47d-1785">
+          <mxGeometry x="5.333333333333332" y="35.03627218934915" width="149.33333333333334" height="9.467455621301776" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1786" value="" style="edgeStyle=none;rounded=1;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=none;startFill=0;jettySize=auto;orthogonalLoop=1;strokeColor=#2D7600;strokeWidth=3;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;spacing=5;fontStyle=1;fillColor=#60a917;" edge="1" parent="1" source="xTgkxQXU3fezMwYFI47d-1793" target="xTgkxQXU3fezMwYFI47d-1791">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1787" value="" style="edgeStyle=none;rounded=1;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=none;startFill=0;jettySize=auto;orthogonalLoop=1;strokeColor=#2D7600;strokeWidth=3;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;spacing=5;fontStyle=1;fillColor=#60a917;" edge="1" parent="1" source="xTgkxQXU3fezMwYFI47d-1793" target="xTgkxQXU3fezMwYFI47d-1790">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1788" value="" style="edgeStyle=none;rounded=1;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=none;startFill=0;jettySize=auto;orthogonalLoop=1;strokeColor=#2D7600;strokeWidth=3;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;spacing=5;fontStyle=1;fillColor=#60a917;" edge="1" parent="1" source="xTgkxQXU3fezMwYFI47d-1793" target="xTgkxQXU3fezMwYFI47d-1789">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1789" value="Talajnedvesség-mérő szenzor" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#d5e8d4;fontFamily=Helvetica;fontSize=14;align=center;spacing=5;fontStyle=0;arcSize=7;perimeterSpacing=2;" vertex="1" parent="1">
+          <mxGeometry x="570" y="850" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1790" value="Hőmérséklet- és páratartalom-mérő szenzor" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#d5e8d4;fontFamily=Helvetica;fontSize=14;align=center;spacing=5;fontStyle=0;arcSize=7;perimeterSpacing=2;" vertex="1" parent="1">
+          <mxGeometry x="400" y="850" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1791" value="Fényerősségmérő szenzor" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#d5e8d4;fontFamily=Helvetica;fontSize=14;align=center;spacing=5;fontStyle=0;arcSize=7;perimeterSpacing=2;" vertex="1" parent="1">
+          <mxGeometry x="340" y="750" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1792" value="" style="group;fillColor=#a20025;fontColor=#ffffff;strokeColor=none;rounded=1;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="480" y="620" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1793" value="Raspberry Pi Zero&lt;br&gt;&lt;br&gt;Nyák egy szektorhoz" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#a20025;fontFamily=Helvetica;fontSize=14;fontColor=#ffffff;align=center;spacing=5;fontStyle=1;arcSize=7;perimeterSpacing=2;" vertex="1" parent="xTgkxQXU3fezMwYFI47d-1792">
+          <mxGeometry width="160" height="80.00000000000001" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1794" value="" style="line;strokeWidth=4;html=1;perimeter=backbonePerimeter;points=[];outlineConnect=0;strokeColor=#FFFFFF;" vertex="1" parent="xTgkxQXU3fezMwYFI47d-1792">
+          <mxGeometry x="5.333333333333333" y="35.26627218934912" width="149.33333333333334" height="9.467455621301776" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1795" value="Vízpumpa" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#ffe6cc;fontFamily=Helvetica;fontSize=14;align=center;spacing=5;arcSize=7;perimeterSpacing=2;" vertex="1" parent="1">
+          <mxGeometry x="630" y="750" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1796" value="" style="edgeStyle=none;rounded=0;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=none;startFill=0;endArrow=classic;endFill=1;jettySize=auto;orthogonalLoop=1;strokeColor=#F08705;strokeWidth=3;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;spacing=5;" edge="1" parent="1" source="xTgkxQXU3fezMwYFI47d-1793" target="xTgkxQXU3fezMwYFI47d-1795">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="765" y="434.5" as="sourcePoint" />
+            <mxPoint x="707" y="408.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1798" value="" style="edgeStyle=none;rounded=1;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=none;startFill=0;jettySize=auto;orthogonalLoop=1;strokeColor=#2D7600;strokeWidth=3;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;spacing=5;fontStyle=1;fillColor=#60a917;" edge="1" parent="1" target="xTgkxQXU3fezMwYFI47d-1801">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="812.6143790849674" y="392.5" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1799" value="" style="edgeStyle=none;rounded=1;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=none;startFill=0;jettySize=auto;orthogonalLoop=1;strokeColor=#2D7600;strokeWidth=3;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;spacing=5;fontStyle=1;fillColor=#60a917;" edge="1" parent="1" target="xTgkxQXU3fezMwYFI47d-1800">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="847.3856209150326" y="392.5" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1800" value="Talajnedvesség-mérő szenzor" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#d5e8d4;fontFamily=Helvetica;fontSize=14;align=center;spacing=5;fontStyle=0;arcSize=7;perimeterSpacing=2;" vertex="1" parent="1">
+          <mxGeometry x="840" y="550" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1801" value="Hőmérséklet- és páratartalom-mérő szenzor" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#d5e8d4;fontFamily=Helvetica;fontSize=14;align=center;spacing=5;fontStyle=0;arcSize=7;perimeterSpacing=2;" vertex="1" parent="1">
+          <mxGeometry x="670" y="550" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1802" value="Fényerősségmérő szenzor" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#d5e8d4;fontFamily=Helvetica;fontSize=14;align=center;spacing=5;fontStyle=0;arcSize=7;perimeterSpacing=2;" vertex="1" parent="1">
+          <mxGeometry x="610" y="440" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1808" value="" style="edgeStyle=none;rounded=1;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=none;startFill=0;jettySize=auto;orthogonalLoop=1;strokeColor=#f08705;strokeWidth=3;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;spacing=5;fontStyle=1;fillColor=#60a917;" edge="1" parent="1" target="xTgkxQXU3fezMwYFI47d-1806">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="884.4769874476988" y="392.5" as="sourcePoint" />
+            <mxPoint x="1013" y="538" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1806" value="Vízpumpa" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#ffe6cc;fontFamily=Helvetica;fontSize=14;align=center;spacing=5;arcSize=7;perimeterSpacing=2;" vertex="1" parent="1">
+          <mxGeometry x="900" y="440" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1809" value="" style="edgeStyle=none;rounded=1;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=none;startFill=0;jettySize=auto;orthogonalLoop=1;strokeColor=#2D7600;strokeWidth=3;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;spacing=5;fontStyle=1;fillColor=#60a917;" edge="1" parent="1" target="xTgkxQXU3fezMwYFI47d-1810" source="1764">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="426" y="133" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1810" value="Vízszintmérő szenzor" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#d5e8d4;fontFamily=Helvetica;fontSize=14;align=center;spacing=5;fontStyle=0;arcSize=7;perimeterSpacing=2;" vertex="1" parent="1">
+          <mxGeometry x="200" y="120" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1811" value="" style="edgeStyle=none;rounded=1;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=none;startFill=0;jettySize=auto;orthogonalLoop=1;strokeColor=#2D7600;strokeWidth=3;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;spacing=5;fontStyle=1;fillColor=#60a917;" edge="1" parent="1" target="xTgkxQXU3fezMwYFI47d-1812" source="1764">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="656" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1812" value="Anemométer" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#d5e8d4;fontFamily=Helvetica;fontSize=14;align=center;spacing=5;fontStyle=0;arcSize=7;perimeterSpacing=2;" vertex="1" parent="1">
+          <mxGeometry x="310" y="40" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1813" value="" style="edgeStyle=none;rounded=1;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=none;startFill=0;jettySize=auto;orthogonalLoop=1;strokeColor=#f08705;strokeWidth=3;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;spacing=5;fontStyle=1;fillColor=#60a917;" edge="1" parent="1" target="xTgkxQXU3fezMwYFI47d-1814" source="1764">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="660" y="40" as="sourcePoint" />
+            <mxPoint x="789" y="185" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1814" value="Ventilátor" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#ffe6cc;fontFamily=Helvetica;fontSize=14;align=center;spacing=5;arcSize=7;perimeterSpacing=2;" vertex="1" parent="1">
+          <mxGeometry x="660" y="40" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1815" value="" style="edgeStyle=none;rounded=1;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=none;startFill=0;jettySize=auto;orthogonalLoop=1;strokeColor=#f08705;strokeWidth=3;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;spacing=5;fontStyle=1;fillColor=#60a917;" edge="1" parent="1" target="xTgkxQXU3fezMwYFI47d-1816" source="1764">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="840" y="107" as="sourcePoint" />
+            <mxPoint x="969" y="252" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1816" value="Ablaknyitó motor" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#ffe6cc;fontFamily=Helvetica;fontSize=14;align=center;spacing=5;arcSize=7;perimeterSpacing=2;" vertex="1" parent="1">
+          <mxGeometry x="770" y="110" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1817" value="" style="edgeStyle=none;rounded=1;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=none;startFill=0;jettySize=auto;orthogonalLoop=1;strokeColor=#f08705;strokeWidth=3;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;spacing=5;fontStyle=1;fillColor=#60a917;" edge="1" parent="1" target="xTgkxQXU3fezMwYFI47d-1818" source="1764">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="598" y="168" as="sourcePoint" />
+            <mxPoint x="799" y="195" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1818" value="LED szalag" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#ffe6cc;fontFamily=Helvetica;fontSize=14;align=center;spacing=5;arcSize=7;perimeterSpacing=2;" vertex="1" parent="1">
+          <mxGeometry x="485" y="27" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1819" value="" style="group;fillColor=#a20025;fontColor=#ffffff;strokeColor=none;rounded=1;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="750" y="310.5" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1820" value="Raspberry Pi Zero&lt;br&gt;&lt;br&gt;Nyák egy szektorhoz" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=none;strokeWidth=3;fillColor=#a20025;fontFamily=Helvetica;fontSize=14;fontColor=#ffffff;align=center;spacing=5;fontStyle=1;arcSize=7;perimeterSpacing=2;" vertex="1" parent="xTgkxQXU3fezMwYFI47d-1819">
+          <mxGeometry width="160" height="80.00000000000001" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1821" value="" style="line;strokeWidth=4;html=1;perimeter=backbonePerimeter;points=[];outlineConnect=0;strokeColor=#FFFFFF;" vertex="1" parent="xTgkxQXU3fezMwYFI47d-1819">
+          <mxGeometry x="5.333333333333333" y="35.26627218934912" width="149.33333333333334" height="9.467455621301776" as="geometry" />
+        </mxCell>
+        <mxCell id="xTgkxQXU3fezMwYFI47d-1822" value="" style="edgeStyle=none;rounded=1;jumpStyle=none;html=1;shadow=0;labelBackgroundColor=none;startArrow=none;startFill=0;jettySize=auto;orthogonalLoop=1;strokeColor=#2D7600;strokeWidth=3;fontFamily=Helvetica;fontSize=14;fontColor=#FFFFFF;spacing=5;fontStyle=1;fillColor=#60a917;" edge="1" source="xTgkxQXU3fezMwYFI47d-1820" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="717" y="438" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
