@@ -179,7 +179,7 @@ class CheckSectorViewModel(
             _state.update { it.copy(isMqttReady = true) }
             var topic = state.value.sector?.mqttname?.split("#")?.get(0).plus("water")
             Log.d("publish", topic)
-            state.value.sector?.let { MQTTClient.publish(topic, "Give me water please") }
+            state.value.sector?.let { MQTTClient.publish(topic, "Water it") }
         }
         else {
             Log.d("error", "Lateinit property mqttClient is not initalized")
