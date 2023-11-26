@@ -41,12 +41,10 @@ class GeneralViewModel(
                 onPublish("FIM3VE/general/window", "close")
             }
             GeneralEvent.PublishLight -> {
-                val msg: String
                 val rgb = state.value.rgb
-                if (!(rgb.red == "0" && rgb.green == "0" && rgb.blue == "0") && !(rgb.red == "" && rgb.green == "" && rgb.blue == "")) {
-                    msg = "on " + (if (isPercent(rgb.red)) rgb.red else "0") + " " + (if (isPercent(rgb.green)) rgb.green else "0") + " " + (if (isPercent(rgb.blue)) rgb.blue else "0")
-                }
-                else msg = "off"
+                val msg = if (is8bit(rgb.red) || is8bit(rgb.green) || is8bit(rgb.blue)) {
+                    "on " + (if (is8bit(rgb.red)) toPercent(rgb.red) else "0") + " " + (if (is8bit(rgb.green)) toPercent(rgb.green) else "0") + " " + (if (is8bit(rgb.blue)) toPercent(rgb.blue) else "0")
+                } else "off"
                 onPublish("FIM3VE/general/light", msg)
             }
             is GeneralEvent.ChangeRed -> {
@@ -75,8 +73,12 @@ class GeneralViewModel(
         load()
     }
 
-    private fun isPercent(input: String) : Boolean {
-        return input.matches(Regex("""^(0|[1-9]\d?|100)$"""))
+    private fun is8bit(input: String) : Boolean {
+        return input.matches(Regex("""^(1?[0-9]{1,2}|2[0-4][0-9]|25[0-5])${'$'}"""))
+    }
+
+    private fun toPercent(input: String) : String {
+        return (input.toInt() * 100 / 255).toString()
     }
 
     private fun onPublish(topic: String, msg: String) {
