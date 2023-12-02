@@ -133,7 +133,7 @@ fun GeneralScreen(
                                 .fillMaxWidth(fraction)
                                 .padding(top = 5.dp)
                         )
-                        if (waterlevel != "" && waterlevel.toInt() < 500) {
+                        if (waterlevel != "" && waterlevel != "danger" && waterlevel != "enough" && waterlevel.toInt() < 8000) {
                             Spacer(modifier = Modifier.height(10.dp))
                             Text(
                                 text = stringResource(id = R.string.textfield_givewater),

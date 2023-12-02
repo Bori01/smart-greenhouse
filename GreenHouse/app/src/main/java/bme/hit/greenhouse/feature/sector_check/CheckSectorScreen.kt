@@ -91,6 +91,13 @@ fun CheckSectorScreen(
         while(true) {
             delay(1000)
             soilmoisture = MQTTClient.soilmoisture
+/*            if (soilmoisture.toInt() < 800) {
+                soilmoisture = soilmoisture.plus(" - wet")
+            }
+            else if (soilmoisture.toInt() < 1100) {
+                soilmoisture = soilmoisture.plus(" - normal")
+            }
+            else soilmoisture = soilmoisture.plus(" - dry")*/
         }
     }
 
