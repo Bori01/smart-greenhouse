@@ -108,6 +108,10 @@ class CheckSectorViewModel(
         load()
     }
 
+    fun isNumeric(input: String) : Boolean {
+        return input.matches(Regex("^\\d+(\\.\\d{1,2})?$"))
+    }
+
     private fun load() {
         val sectorId = checkNotNull<Int>(savedState["id"])
         viewModelScope.launch {

@@ -19,6 +19,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import bme.hit.greenhouse.R
@@ -83,7 +84,16 @@ fun CheckSectorScreen(
     LaunchedEffect(key1 = light) {
         while(true) {
             delay(1000)
-            light = MQTTClient.lightness
+            light = (MQTTClient.lightness)
+            if (viewModel.isNumeric(light)) {
+                if (light.toDouble() < 700.0) {
+                    light = light.plus(" lux - low lightning")
+                }
+                else if (light.toDouble() < 2000.0) {
+                    light = light.plus(" lux - normal lightning")
+                }
+                else light = light.plus(" lux - strong lightning")
+            }
         }
     }
 
@@ -91,13 +101,15 @@ fun CheckSectorScreen(
         while(true) {
             delay(1000)
             soilmoisture = MQTTClient.soilmoisture
-/*            if (soilmoisture.toInt() < 800) {
-                soilmoisture = soilmoisture.plus(" - wet")
+            if (viewModel.isNumeric(soilmoisture)) {
+                if (soilmoisture.toDouble() < 10000.0) {
+                    soilmoisture = soilmoisture.plus(" - wet")
+                }
+                else if (soilmoisture.toDouble() < 20000.0) {
+                    soilmoisture = soilmoisture.plus(" - normal")
+                }
+                else soilmoisture = soilmoisture.plus(" - dry")
             }
-            else if (soilmoisture.toInt() < 1100) {
-                soilmoisture = soilmoisture.plus(" - normal")
-            }
-            else soilmoisture = soilmoisture.plus(" - dry")*/
         }
     }
 
@@ -260,11 +272,4 @@ fun CheckSectorScreen(
             }
         }
     }
-    /*
-    if (!(state.isMqttReady)) {
-        var text = "Please connect to the MQTT server first!"
-        val duration = Toast.LENGTH_SHORT
-        val toast = Toast.makeText(context, text, duration)
-        toast.show()
-    }*/
 }
