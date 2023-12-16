@@ -1,6 +1,0 @@
-network={
-        ssid="BME"
-        key_mgmt=NONE
-}
-
-sector1-ben átírni sector3/watert
